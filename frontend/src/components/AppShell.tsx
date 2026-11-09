@@ -216,8 +216,8 @@ export function AppShell({ children }: AppShellProps) {
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row bg-canvas text-ink-primary antialiased selection:bg-brand-soft selection:text-brand overflow-x-hidden w-full">
-      {/* DESKTOP EDITORIAL SIDEBAR (248px, deep charcoal-green #202B28) */}
-      <aside className="hidden lg:flex flex-col w-[248px] bg-sidebar-bg text-sidebar-text select-none shrink-0 sticky top-0 h-screen border-r border-[#2C3B37] z-20">
+      {/* DESKTOP EDITORIAL SIDEBAR (248px, deep charcoal-green #202B28, fixed full-height) */}
+      <aside className="hidden lg:flex flex-col w-[248px] bg-sidebar-bg text-sidebar-text select-none shrink-0 fixed left-0 top-0 bottom-0 h-screen border-r border-[#2C3B37] z-30 overflow-y-auto no-scrollbar">
         {/* Workspace Brand Header */}
         <div className="px-6 py-5 border-b border-[#2C3B37] space-y-3">
           <div className="flex items-center gap-3">
@@ -400,10 +400,12 @@ export function AppShell({ children }: AppShellProps) {
         </div>
       </header>
 
-      {/* MAIN CONTENT AREA: Max 1440px, centered with generous padding and warm paper canvas */}
-      <main className="flex-1 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 py-6 sm:py-8 pb-28 lg:pb-12 min-w-0 overflow-x-hidden">
-        {children}
-      </main>
+      {/* MAIN CONTENT AREA: Max 1440px, centered with generous padding and warm paper canvas, offset for fixed sidebar */}
+      <div className="flex-1 flex flex-col min-w-0 lg:pl-[248px] w-full">
+        <main className="flex-1 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 py-6 sm:py-8 pb-28 lg:pb-12 min-w-0 overflow-x-hidden">
+          {children}
+        </main>
+      </div>
 
       {/* MOBILE / TABLET FIXED BOTTOM NAVIGATION: 5 items, >=44px touch targets, safe-area insets */}
       <nav
