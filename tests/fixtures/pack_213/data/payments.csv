@@ -1,0 +1,130 @@
+payment_id,date,payer,payer_email,amount,method,reference
+P5001,12/04/2026,PASTOR IMRAN GRANT,media@ironcladdfw.org,300.00,card,INV-1003
+P5002,15/04/2026,Ben Grant,ben@hillcrestroofingco.com,900.00,ACH,
+P5003,16/04/2026,JOY GREEN,hello@greendental.com,1500.00,card,INV-1005
+P5004,17/04/2026,Rise & Grind Podcast,nadia@riseandgrind.fm,300.00,card,
+P5005,19/04/2026,R&G Podcast,nadia@riseandgrind.fm,300.00,card,INV-1002
+P5006,20/04/2026,IRONCLAD DFW,media@ironcladdfw.org,300.00,Zelle,INV-1009
+P5007,20/04/2026,RAJ PARK,raj@metroplexmakers.fm,550.00,ACH,
+P5008,21/04/2026,Apex Medspa,lena@apexmedspa.com,1500.00,Zelle,INV-1010
+P5009,22/04/2026,IRONCLAD DFW,media@ironcladdfw.org,300.00,Zelle,INV-1001
+P5010,29/04/2026,CANYON BUILDERS LLC,ben@canyon.build,1500.00,Zelle,INV-1004
+P5011,30/04/2026,Nadia Okafor,nadia@riseandgrind.fm,300.00,card,INV-1011
+P5012,04/05/2026,Becker Insurance,will@beckerinsures.com,2500.00,ACH,INV-1015
+P5013,07/05/2026,RAJ PARK,raj@metroplexmakers.fm,550.00,card,
+P5014,08/05/2026,JARED ROMERO,jromero@oaklanewp.com,2500.00,card,
+P5015,09/05/2026,R&G Podcast,nadia@riseandgrind.fm,300.00,card,INV-1014
+P5016,10/05/2026,BEN MENDEZ,info@mendezlaw.com,2500.00,Zelle,INV-1016
+P5017,13/05/2026,RISE & GRIND PODCAST,nadia@riseandgrind.fm,300.00,card,INV-1020
+P5018,17/05/2026,METROPLEX MAKERS PODCAST,raj@metroplexmakers.fm,550.00,card,INV-1024
+P5019,17/05/2026,Ironclad Media Team,media@ironcladdfw.org,255.00,ACH,INV-1019
+P5020,20/05/2026,PAULA HALE,paula@lunamedspa.com,900.00,card,INV-1023
+P5021,20/05/2026,Joy Green DDS,hello@greendental.com,1500.00,card,INV-1025
+P5022,20/05/2026,IRONCLAD CHURCH,media@ironcladdfw.org,300.00,card,
+P5023,21/05/2026,MAGNOLIA BRIDAL,ivy@magnoliabridal.com,900.00,ACH,
+P5024,28/05/2026,Derek Delgado,derek@crownbarbers.com,900.00,card,
+P5025,28/05/2026,Ben Grant,ben@hillcrestroofingco.com,900.00,card,
+P5026,31/05/2026,Bloom,megan@bloomfit.co,900.00,card,
+P5027,01/06/2026,Rise and Grind,nadia@riseandgrind.fm,300.00,ACH,
+P5028,02/06/2026,BECKER INSURANCE GROUP,will@beckerinsures.com,2500.00,card,INV-1032
+P5029,02/06/2026,CANYON BUILDERS LLC,ben@canyon.build,1500.00,ACH,INV-1031
+P5030,03/06/2026,Keystone Chiro,drtran@keystonechiro.com,2500.00,ACH,INV-1035
+P5031,04/06/2026,IRONCLAD DFW,media@ironcladdfw.org,255.00,card,INV-1030
+P5032,05/06/2026,METROPLEX MAKERS,raj@metroplexmakers.fm,550.00,Zelle,INV-1039
+P5033,05/06/2026,Ironclad Media Team,media@ironcladdfw.org,255.00,ACH,INV-1022
+P5034,06/06/2026,Oak Lane Wealth Partners,jromero@oaklanewp.com,2500.00,ACH,INV-1034
+P5035,08/06/2026,Stone Bridge Realty LLC,paula@stonebridgerealty.com,1500.00,card,INV-1037
+P5036,13/06/2026,Carmen Haddad DDS,hello@haddaddental.com,1500.00,card,INV-1033
+P5037,14/06/2026,Luna,paula@lunamedspa.com,900.00,Zelle,INV-1042
+P5038,17/06/2026,Magnolia Bridal,ivy@magnoliabridal.com,900.00,card,INV-1029
+P5039,17/06/2026,PASTOR IMRAN GRANT,media@ironcladdfw.org,255.00,ACH,
+P5040,20/06/2026,R&G Podcast,nadia@riseandgrind.fm,300.00,card,
+P5041,20/06/2026,HILLCREST ROOFING CO,ben@hillcrestroofingco.com,900.00,card,INV-1044
+P5042,21/06/2026,RISE & GRIND PODCAST,nadia@riseandgrind.fm,300.00,Zelle,
+P5043,22/06/2026,Metroplex Makers Podcast,raj@metroplexmakers.fm,550.00,card,INV-1047
+P5044,22/06/2026,Apex Med Spa,lena@apexmedspa.com,1500.00,card,
+P5045,23/06/2026,Mendez,info@mendezlaw.com,2250.00,card,INV-1036
+P5046,24/06/2026,TASHA HASSAN,tasha@sterlingcoffee.com,900.00,card,
+P5047,25/06/2026,BLOOM,megan@bloomfit.co,900.00,card,
+P5048,26/06/2026,R&G Podcast,nadia@riseandgrind.fm,300.00,ACH,INV-1054
+P5049,27/06/2026,Ironclad Media Team,media@ironcladdfw.org,255.00,Zelle,INV-1049
+P5050,29/06/2026,Kingsley & Co Builders,rosa@kingsley.build,1500.00,ACH,INV-1053
+P5051,02/07/2026,Magnolia Bridal Boutique,ivy@magnoliabridal.com,900.00,Zelle,INV-1055
+P5052,02/07/2026,Ironclad Media Team,media@ironcladdfw.org,255.00,card,
+P5054,02/07/2026,Becker Ins,will@beckerinsures.com,2500.00,card,INV-1058
+P5055,02/07/2026,KEYSTONE CHIROPRACTIC,drtran@keystonechiro.com,2500.00,card,INV-1059
+P5056,03/07/2026,RAJ PARK,raj@metroplexmakers.fm,550.00,Zelle,INV-1057
+P5057,04/07/2026,GREEN FAMILY LAW,info@greenfamilylaw.com,900.00,Zelle,INV-1045
+P5058,05/07/2026,LUMEN SOCIAL LLC,aisha@lumenmktg.com,900.00,ACH,Lumen Jun invoices
+P5059,06/07/2026,Ironclad Church,media@ironcladdfw.org,255.00,ACH,INV-1062
+P5060,07/07/2026,CROWN BARBERS,derek@crownbarbers.com,900.00,card,INV-1050
+P5061,08/07/2026,Mendez Law Firm PLLC,info@mendezlaw.com,2500.00,Zelle,INV-1056
+P5062,15/07/2026,JOY GREEN,hello@greendental.com,1500.00,Zelle,INV-1068
+P5063,17/07/2026,Ironclad Media Team,media@ironcladdfw.org,255.00,card,INV-1069
+P5064,18/07/2026,Metroplex Makers,raj@metroplexmakers.fm,550.00,ACH,
+P5065,19/07/2026,OAK LANE WP,jromero@oaklanewp.com,2500.00,card,INV-1060
+P5066,22/07/2026,Carlos Novak,carlos@vistagym.co,900.00,ACH,
+P5067,26/07/2026,Canyon Builders LLC,ben@canyon.build,1500.00,ACH,INV-1081
+P5068,27/07/2026,DR. CARMEN HADDAD,hello@haddaddental.com,1500.00,card,
+P5069,28/07/2026,Kims Auto,nadia@kimsautospa.com,900.00,card,INV-1075
+P5070,29/07/2026,STONE BRIDGE REALTY LLC,paula@stonebridgerealty.com,1500.00,Zelle,
+P5071,31/07/2026,IRONCLAD DFW,media@ironcladdfw.org,255.00,Zelle,INV-1086
+P5072,31/07/2026,IRONCLAD DFW,media@ironcladdfw.org,255.00,Zelle,INV-1065
+P5073,01/08/2026,Riverbend Coffee Roasters,mia@riverbendcoffee.com,900.00,card,INV-1073
+P5074,01/08/2026,STERLING COFFEE ROASTERS,tasha@sterlingcoffee.com,900.00,card,INV-1083
+P5075,02/08/2026,Ironclad Media Team,media@ironcladdfw.org,255.00,card,INV-1080
+P5076,03/08/2026,Hillcrest Roofing,ben@hillcrestroofingco.com,900.00,ACH,
+P5077,03/08/2026,Luna,paula@lunamedspa.com,900.00,ACH,
+P5078,03/08/2026,NADIA OKAFOR,,1200.00,Zelle,july sessions
+P5079,05/08/2026,LUMEN SOCIAL LLC,aisha@lumenmktg.com,2700.00,ACH,Lumen Jul invoices
+P5080,05/08/2026,MEGAN WEBB,megan@bloomathletics.com,900.00,card,
+P5081,08/08/2026,Metroplex Makers,raj@metroplexmakers.fm,550.00,card,INV-1093
+P5082,12/08/2026,Vista Gym,carlos@vistagym.co,900.00,ACH,
+P5083,13/08/2026,JARED ROMERO,jromero@oaklanewp.com,2500.00,Zelle,INV-1089
+P5084,13/08/2026,R&G Podcast,nadia@riseandgrind.fm,300.00,card,INV-1097
+P5085,13/08/2026,MENDEZ LAW FIRM,info@mendezlaw.com,2500.00,card,INV-1090
+P5086,14/08/2026,MAGNOLIA BRIDAL BOUTIQUE,ivy@magnoliabridal.com,900.00,card,INV-1095
+P5087,14/08/2026,Green Law,info@greenfamilylaw.com,900.00,card,
+P5088,15/08/2026,Ivy Walsh,ivy@magnoliabridal.com,900.00,card,INV-1095
+P5089,15/08/2026,Crown Barbershop,derek@crownbarbers.com,900.00,card,INV-1085
+P5090,16/08/2026,Keystone Chiropractic,drtran@keystonechiro.com,2500.00,ACH,
+P5091,16/08/2026,Kingsley Builders LLC,rosa@kingsley.build,1500.00,card,INV-1087
+P5092,19/08/2026,APEX MEDSPA,lena@apexmedspa.com,1500.00,Zelle,
+P5093,19/08/2026,BEN GRANT,ben@hillcrestroofingco.com,900.00,card,
+P5094,21/08/2026,Ironclad Media Team,media@ironcladdfw.org,255.00,ACH,
+P5095,21/08/2026,R&G Podcast,nadia@riseandgrind.fm,300.00,ACH,INV-1092
+P5096,22/08/2026,Dr. Mia Price,mprice@juniperfamilytherapy.com,1500.00,Zelle,INV-1104
+P5097,23/08/2026,Luna Med Spa - Plano,paula@lunamedspa.com,900.00,ACH,INV-1102
+P5098,24/08/2026,Riverbend Coffee,mia@riverbendcoffee.com,900.00,Zelle,INV-1098
+P5099,25/08/2026,MESQUITE ROOFING CO,jordan@mesquiteroofingco.com,900.00,ACH,
+P5100,28/08/2026,Bloom Fitness,megan@bloomathletics.com,900.00,Zelle,INV-1107
+P5101,30/08/2026,Metroplex Makers,raj@metroplexmakers.fm,550.00,ACH,INV-1108
+P5102,31/08/2026,Ironclad DFW,media@ironcladdfw.org,255.00,Zelle,
+P5103,01/09/2026,DR. CARMEN HADDAD,hello@haddaddental.com,1500.00,card,INV-1110
+P5104,01/09/2026,Rise & Grind Podcast,nadia@riseandgrind.fm,300.00,card,INV-1112
+P5105,03/09/2026,LUMEN SOCIAL LLC,aisha@lumenmktg.com,900.00,ACH,Lumen Aug invoices
+P5106,04/09/2026,CANYON BUILDERS,ben@canyon.build,1500.00,card,
+P5107,06/09/2026,Oak Lane Wealth,jromero@oaklanewp.com,2500.00,Zelle,INV-1117
+P5108,06/09/2026,RAJ PARK,raj@metroplexmakers.fm,550.00,card,
+P5109,10/09/2026,Kim's Auto,nadia@kimsautospa.com,900.00,Zelle,INV-1103
+P5110,10/09/2026,Mendez Law,info@mendezlaw.com,2500.00,ACH,INV-1118
+P5111,11/09/2026,Crown Barbers,derek@crownbarbers.com,900.00,Zelle,INV-1105
+P5112,12/09/2026,Joy Green DDS,hello@greendental.com,1500.00,card,INV-1113
+P5113,13/09/2026,Nadia Okafor,nadia@riseandgrind.fm,300.00,card,
+P5114,13/09/2026,JORDAN BECKER,,450.00,Zelle,half now half later
+P5115,14/09/2026,APEX MED SPA,lena@apexmedspa.com,1500.00,ACH,INV-1126
+P5116,14/09/2026,IVY WALSH,ivy@magnoliabridal.com,900.00,card,INV-1127
+P5117,15/09/2026,DANIELS AUTO,trent.daniels.detail@gmail.com,1500.00,ACH,
+P5118,16/09/2026,Riverbend Coffee,mia@riverbendcoffee.com,900.00,card,INV-1125
+P5119,17/09/2026,Ironclad Media Team,media@ironcladdfw.org,255.00,card,INV-1134
+P5120,18/09/2026,LUNA MEDSPA,paula@lunamedspa.com,900.00,card,
+P5121,19/09/2026,MEGAN WEBB,megan@bloomathletics.com,900.00,ACH,INV-1136
+P5122,19/09/2026,Stone Bridge Realty LLC,paula@stonebridgerealty.com,1500.00,Zelle,INV-1135
+P5123,20/09/2026,Raj Park,raj@metroplexmakers.fm,550.00,card,INV-1138
+P5124,22/09/2026,Crown Barbershop,derek@crownbarbers.com,900.00,card,INV-1139
+P5125,23/09/2026,RISE & GRIND PODCAST,nadia@riseandgrind.fm,300.00,card,INV-1137
+P5126,24/09/2026,PASTOR IMRAN GRANT,media@ironcladdfw.org,255.00,card,INV-1121
+P5127,28/09/2026,HILLCREST ROOFING CO,ben@hillcrestroofingco.com,900.00,ACH,INV-1130
+P5128,29/09/2026,CARLOS NOVAK,carlos@vistagym.co,900.00,Zelle,INV-1133
+P5129,03/10/2026,LUMEN SOCIAL LLC,aisha@lumenmktg.com,1800.00,ACH,Lumen Sep invoices
+P5130,03/10/2026,Ironclad DFW,media@ironcladdfw.org,255.00,ACH,INV-1131

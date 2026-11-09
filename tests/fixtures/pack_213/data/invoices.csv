@@ -1,0 +1,159 @@
+invoice_no,bill_to,email,issued,due,amount,status,memo
+INV-1001,Ironclad Media Team,media@ironcladdfw.org,2026-04-04,2026-04-18,300.00,paid,B001 Podcast Studio 2hr
+INV-1002,Nadia Okafor,nadia@riseandgrind.fm,2026-04-07,2026-04-21,300.00,paid,Podcast Studio 2hr 4/6
+INV-1003,Ironclad DFW,media@ironcladdfw.org,2026-04-09,2026-04-23,300.00,paid,
+INV-1004,Canyon Builders LLC,ben@canyon.build,2026-04-11,2026-04-25,1500.00,paid,B005 Content Day
+INV-1005,Green Dental,hello@greendental.com,2026-04-11,2026-04-25,1500.00,paid,Content Day 4/9
+INV-1006,Nadia Okafor,nadia@riseandgrind.fm,2026-04-14,2026-04-28,300.00,paid,
+INV-1007,Hillcrest Roofing Co,ben@hillcrestroofingco.com,2026-04-14,2026-04-28,900.00,paid,Reels Pack 4/14
+INV-1008,Metroplex Makers,raj@metroplexmakers.fm,2026-04-15,2026-04-29,550.00,paid,B007 Podcast Studio 4hr
+INV-1009,Ironclad Media Team,media@ironcladdfw.org,2026-04-17,2026-05-01,300.00,paid,
+INV-1010,Apex,lena@apexmedspa.com,2026-04-20,2026-05-04,1500.00,paid,Content Day 4/20
+INV-1011,Nadia Okafor,nadia@riseandgrind.fm,2026-04-23,2026-05-07,300.00,paid,Podcast Studio 2hr 4/23
+INV-1012,Ironclad DFW,media@ironcladdfw.org,2026-04-28,2026-05-12,300.00,paid,
+INV-1013,Magnolia Bridal Boutique,ivy@magnoliabridal.com,2026-04-29,2026-05-13,900.00,paid,Reels Pack 4/28
+INV-1014,R&G Podcast,nadia@riseandgrind.fm,2026-04-30,2026-05-14,300.00,paid,
+INV-1015,Becker Insurance,will@beckerinsures.com,2026-05-01,2026-05-15,2500.00,paid,Monthly retainer May
+INV-1016,Mendez,info@mendezlaw.com,2026-05-01,2026-05-15,2500.00,paid,Monthly retainer May
+INV-1017,Oak Lane WP,jromero@oaklanewp.com,2026-05-01,2026-05-15,2500.00,paid,Monthly retainer May
+INV-1018,Metroplex Makers,raj@metroplexmakers.fm,2026-05-02,2026-05-16,550.00,paid,Podcast Studio 4hr 4/29
+INV-1019,Ironclad DFW,media@ironcladdfw.org,2026-05-08,2026-05-22,255.00,paid,B018 Podcast Studio 2hr
+INV-1020,R&G Podcast,nadia@riseandgrind.fm,2026-05-11,2026-05-25,300.00,paid,B020 Podcast Studio 2hr
+INV-1021,Bloom Fit,megan@bloomfit.co,2026-05-13,2026-05-27,900.00,paid,Reels Pack 5/11
+INV-1022,Ironclad DFW,media@ironcladdfw.org,2026-05-14,2026-05-28,255.00,paid,B023 Podcast Studio 2hr
+INV-1023,Luna Medspa,paula@lunamedspa.com,2026-05-15,2026-05-29,900.00,paid,Reels Pack 5/14
+INV-1024,Metroplex Makers Podcast,raj@metroplexmakers.fm,2026-05-16,2026-05-30,550.00,paid,
+INV-1025,Joy Green DDS,hello@greendental.com,2026-05-17,2026-05-31,1500.00,paid,Content Day 5/15
+INV-1026,Hillcrest Roofing,ben@hillcrestroofingco.com,2026-05-19,2026-06-02,900.00,paid,B027 Reels Pack
+INV-1027,Rise & Grind Podcast,nadia@riseandgrind.fm,2026-05-23,2026-06-06,300.00,paid,
+INV-1028,Derek Delgado,derek@crownbarbers.com,2026-05-25,2026-06-08,900.00,paid,B031 Reels Pack
+INV-1029,Magnolia Bridal Boutique,ivy@magnoliabridal.com,2026-05-26,2026-06-09,900.00,paid,
+INV-1030,Ironclad Church,media@ironcladdfw.org,2026-05-28,2026-06-11,255.00,paid,
+INV-1031,Canyon Builders LLC,ben@canyon.build,2026-05-30,2026-06-13,1500.00,paid,Content Day 5/27
+INV-1032,Becker Insurance,will@beckerinsures.com,2026-06-01,2026-06-15,2500.00,paid,Monthly retainer June
+INV-1033,Haddad Dental,hello@haddaddental.com,2026-06-01,2026-06-15,1500.00,paid,
+INV-1034,Oak Lane Wealth,jromero@oaklanewp.com,2026-06-01,2026-06-15,2500.00,paid,Monthly retainer June
+INV-1035,Keystone Chiropractic,drtran@keystonechiro.com,2026-06-01,2026-06-15,2500.00,paid,Monthly retainer June
+INV-1036,Mendez,info@mendezlaw.com,2026-06-01,2026-06-15,2250.00,paid,Monthly retainer June
+INV-1037,Paula Haddad,paula@stonebridgerealty.com,2026-06-01,2026-06-15,1500.00,paid,
+INV-1038,Nadia Okafor,nadia@riseandgrind.fm,2026-06-02,2026-06-16,300.00,paid,B037 Podcast Studio 2hr
+INV-1039,Raj Park,raj@metroplexmakers.fm,2026-06-04,2026-06-18,550.00,paid,Podcast Studio 4hr 6/1
+INV-1040,Ironclad Church,media@ironcladdfw.org,2026-06-05,2026-06-19,255.00,paid,B038 Podcast Studio 2hr
+INV-1041,Lumen Social,aisha@lumenmktg.com,2026-06-10,2026-06-24,900.00,paid,Reels Pack 6/10
+INV-1042,Luna Medspa,paula@lunamedspa.com,2026-06-13,2026-06-27,900.00,paid,
+INV-1043,Apex Med Spa - Frisco,lena@apexmedspa.com,2026-06-13,2026-06-27,1500.00,paid,B041 Content Day
+INV-1044,Hillcrest Roofing Co,ben@hillcrestroofingco.com,2026-06-15,2026-06-29,900.00,paid,B042 Reels Pack
+INV-1045,Green Family Law,info@greenfamilylaw.com,2026-06-16,2026-06-30,900.00,paid,Reels Pack 6/16
+INV-1046,Megan Webb,megan@bloomfit.co,2026-06-16,2026-06-30,900.00,paid,
+INV-1047,Metroplex Makers Podcast,raj@metroplexmakers.fm,2026-06-17,2026-07-01,550.00,paid,B047 Podcast Studio 4hr
+INV-1048,Rise and Grind,nadia@riseandgrind.fm,2026-06-18,2026-07-02,300.00,paid,B046 Podcast Studio 2hr
+INV-1049,Ironclad Church,media@ironcladdfw.org,2026-06-18,2026-07-02,255.00,paid,B045 Podcast Studio 2hr
+INV-1050,Crown Barbers,derek@crownbarbers.com,2026-06-19,2026-07-03,900.00,paid,
+INV-1051,Ironclad Media Team,media@ironcladdfw.org,2026-06-23,2026-07-07,255.00,paid,Podcast Studio 2hr 6/22
+INV-1052,Sterling Coffee,tasha@sterlingcoffee.com,2026-06-23,2026-07-07,900.00,paid,
+INV-1053,Kingsley & Co Builders,rosa@kingsley.build,2026-06-24,2026-07-08,1500.00,paid,B055 Content Day
+INV-1054,Rise and Grind,nadia@riseandgrind.fm,2026-06-25,2026-07-09,300.00,paid,
+INV-1055,Magnolia Bridal Boutique,ivy@magnoliabridal.com,2026-06-30,2026-07-14,900.00,paid,B057 Reels Pack
+INV-1056,Mendez Law,info@mendezlaw.com,2026-07-01,2026-07-15,2500.00,paid,Monthly retainer July
+INV-1057,Metroplex Makers,raj@metroplexmakers.fm,2026-07-01,2026-07-15,550.00,paid,
+INV-1058,Becker Insurance,will@beckerinsures.com,2026-07-01,2026-07-15,2500.00,paid,Monthly retainer July
+INV-1059,Keystone Chiropractic,drtran@keystonechiro.com,2026-07-01,2026-07-15,2500.00,paid,Monthly retainer July
+INV-1060,Oak Lane Wealth,jromero@oaklanewp.com,2026-07-01,2026-07-15,2500.00,paid,Monthly retainer July
+INV-1061,Lumen Social,aisha@lumenmktg.com,2026-07-02,2026-07-16,900.00,paid,
+INV-1062,Ironclad Media Team,media@ironcladdfw.org,2026-07-03,2026-07-17,255.00,paid,
+INV-1063,Rise & Grind Podcast,nadia@riseandgrind.fm,2026-07-05,2026-07-19,300.00,unpaid,B061 Podcast Studio 2hr
+INV-1064,Carmen Haddad DDS,hello@haddaddental.com,2026-07-09,2026-07-23,1500.00,paid,Content Day 7/9
+INV-1065,Ironclad Media Team,media@ironcladdfw.org,2026-07-09,2026-07-23,255.00,paid,
+INV-1066,Nadia Okafor,nadia@riseandgrind.fm,2026-07-09,2026-07-23,300.00,unpaid,B065 Podcast Studio 2hr
+INV-1067,Carlos Novak,carlos@vistagym.co,2026-07-10,2026-07-24,900.00,paid,
+INV-1068,Joy Green DDS,hello@greendental.com,2026-07-13,2026-07-27,1500.00,paid,Content Day 7/13
+INV-1069,Ironclad Media Team,media@ironcladdfw.org,2026-07-14,2026-07-28,255.00,paid,
+INV-1070,Metroplex Makers,raj@metroplexmakers.fm,2026-07-15,2026-07-29,550.00,paid,Podcast Studio 4hr 7/14
+INV-1071,Luna,paula@lunamedspa.com,2026-07-16,2026-07-30,900.00,paid,
+INV-1072,Nadia Okafor,nadia@riseandgrind.fm,2026-07-16,2026-07-30,300.00,unpaid,Podcast Studio 2hr 7/15
+INV-1073,Riverbend Roasters,mia@riverbendcoffee.com,2026-07-17,2026-07-31,900.00,paid,B076 Reels Pack
+INV-1074,Bloom,megan@bloomfit.co,2026-07-18,2026-08-01,900.00,paid,Reels Pack 7/16
+INV-1075,Kim's Auto,nadia@kimsautospa.com,2026-07-19,2026-08-02,900.00,paid,B077 Reels Pack
+INV-1076,Lumen Social,aisha@lumenmktg.com,2026-07-21,2026-08-04,900.00,paid,B079 Reels Pack
+INV-1077,Rise & Grind,nadia@riseandgrind.fm,2026-07-21,2026-08-04,300.00,unpaid,Podcast Studio 2hr 7/21
+INV-1078,Hillcrest Roofing,ben@hillcrestroofingco.com,2026-07-22,2026-08-05,900.00,paid,B082 Reels Pack
+INV-1079,Marcus Green,info@greenfamilylaw.com,2026-07-23,2026-08-06,900.00,paid,
+INV-1080,Ironclad DFW,media@ironcladdfw.org,2026-07-24,2026-08-07,255.00,paid,B080 Podcast Studio 2hr
+INV-1081,Canyon Builders LLC,ben@canyon.build,2026-07-24,2026-08-07,1500.00,paid,B084 Content Day
+INV-1082,Paula Haddad,paula@stonebridgerealty.com,2026-07-27,2026-08-10,1500.00,paid,
+INV-1083,Sterling Coffee,tasha@sterlingcoffee.com,2026-07-27,2026-08-10,900.00,paid,Reels Pack 7/27
+INV-1084,Lumen Social,aisha@lumenmktg.com,2026-07-28,2026-08-11,900.00,paid,Reels Pack 7/27
+INV-1085,Crown Barbershop,derek@crownbarbers.com,2026-07-28,2026-08-11,900.00,paid,B086 Reels Pack
+INV-1086,Ironclad Media Team,media@ironcladdfw.org,2026-07-29,2026-08-12,255.00,paid,B090 Podcast Studio 2hr
+INV-1087,Kingsley Builders LLC,rosa@kingsley.build,2026-07-29,2026-08-12,1500.00,paid,B089 Content Day
+INV-1088,Dr. Tran,drtran@keystonechiro.com,2026-08-01,2026-08-15,2500.00,paid,Monthly retainer August
+INV-1089,Oak Lane Wealth,jromero@oaklanewp.com,2026-08-01,2026-08-15,2500.00,paid,Monthly retainer August
+INV-1090,Mendez,info@mendezlaw.com,2026-08-01,2026-08-15,2500.00,paid,Monthly retainer August
+INV-1091,Apex Medspa,lena@apexmedspa.com,2026-08-04,2026-08-18,1500.00,paid,Content Day 8/3
+INV-1092,Nadia Okafor,nadia@riseandgrind.fm,2026-08-06,2026-08-20,300.00,paid,B091 Podcast Studio 2hr
+INV-1093,Raj Park,raj@metroplexmakers.fm,2026-08-06,2026-08-20,550.00,paid,
+INV-1094,Jordan Becker,jordan@mesquiteroofingco.com,2026-08-07,2026-08-21,900.00,paid,
+INV-1095,Ivy Walsh,ivy@magnoliabridal.com,2026-08-09,2026-08-23,900.00,paid,B096 Reels Pack
+INV-1096,Vista Gym TX,carlos@vistagym.co,2026-08-11,2026-08-25,900.00,paid,
+INV-1097,Rise & Grind,nadia@riseandgrind.fm,2026-08-12,2026-08-26,300.00,paid,
+INV-1098,Riverbend Coffee Roasters,mia@riverbendcoffee.com,2026-08-12,2026-08-26,900.00,paid,B102 Reels Pack
+INV-1099,Hillcrest Roofing,ben@hillcrestroofingco.com,2026-08-14,2026-08-28,900.00,paid,Reels Pack 8/14
+INV-1100,Will Ortiz,will@stonebridgerg.com,2026-08-15,2026-08-29,1500.00,unpaid,Content Day 8/13
+INV-1101,Ironclad DFW,media@ironcladdfw.org,2026-08-16,2026-08-30,255.00,paid,Podcast Studio 2hr 8/13
+INV-1102,Luna Medspa,paula@lunamedspa.com,2026-08-18,2026-09-01,900.00,paid,B107 Reels Pack
+INV-1103,Kim's Auto Spa,nadia@kimsautospa.com,2026-08-19,2026-09-02,900.00,paid,B106 Reels Pack
+INV-1104,Juniper Therapy,mprice@juniperfamilytherapy.com,2026-08-19,2026-09-02,1500.00,paid,Content Day 8/19
+INV-1105,Derek Delgado,derek@crownbarbers.com,2026-08-20,2026-09-03,900.00,unpaid,Reels Pack 8/20
+INV-1106,Green Law,info@greenfamilylaw.com,2026-08-20,2026-09-03,900.00,unpaid,Reels Pack 8/20
+INV-1107,Bloom,megan@bloomathletics.com,2026-08-21,2026-09-04,900.00,paid,
+INV-1108,Metroplex Makers,raj@metroplexmakers.fm,2026-08-23,2026-09-06,550.00,paid,
+INV-1109,Ironclad DFW,media@ironcladdfw.org,2026-08-24,2026-09-07,255.00,paid,Podcast Studio 2hr 8/24
+INV-1110,Carmen Haddad DDS,hello@haddaddental.com,2026-08-25,2026-09-08,1500.00,paid,Content Day 8/24
+INV-1111,Sterling Coffee,tasha@sterlingcoffee.com,2026-08-25,2026-09-08,900.00,paid,B115 Reels Pack
+INV-1112,R&G Podcast,nadia@riseandgrind.fm,2026-08-25,2026-09-08,300.00,paid,
+INV-1113,Green Dental PLLC,hello@greendental.com,2026-08-28,2026-09-11,1500.00,paid,Content Day 8/27
+INV-1114,Lumen Social,aisha@lumenmktg.com,2026-08-30,2026-09-13,900.00,paid,
+INV-1115,Daniels Detailing,trent.daniels.detail@gmail.com,2026-08-31,2026-09-14,1500.00,paid,B121 Content Day
+INV-1116,Canyon & Co Builders,ben@canyon.build,2026-09-01,2026-09-15,1500.00,paid,B120 Content Day
+INV-1117,Oak Lane Wealth Partners,jromero@oaklanewp.com,2026-09-01,2026-09-15,2500.00,paid,Monthly retainer September
+INV-1118,Mendez Law Firm PLLC,info@mendezlaw.com,2026-09-01,2026-09-15,2500.00,paid,Monthly retainer September
+INV-1119,Keystone Chiro,drtran@keystonechiro.com,2026-09-01,2026-09-15,2500.00,unpaid,Monthly retainer September
+INV-1120,Kind Hands Homecare,priya@kindhandshomecare.com,2026-09-01,2026-09-15,1500.00,unpaid,B123 Content Day
+INV-1121,Ironclad DFW,media@ironcladdfw.org,2026-09-02,2026-09-16,255.00,paid,Podcast Studio 2hr 8/31
+INV-1122,Mesquite Roofing,jordan@mesquiteroofingco.com,2026-09-03,2026-09-17,900.00,partial,B122 Reels Pack
+INV-1123,Metroplex Makers Podcast,raj@metroplexmakers.fm,2026-09-03,2026-09-17,550.00,paid,B124 Podcast Studio 4hr
+INV-1124,Lumen Social,aisha@lumenmktg.com,2026-09-04,2026-09-18,900.00,paid,Reels Pack 9/3
+INV-1125,Riverbend Coffee Roasters,mia@riverbendcoffee.com,2026-09-07,2026-09-21,900.00,unpaid,B131 Reels Pack
+INV-1126,Apex Med Spa - Frisco,lena@apexmedspa.com,2026-09-07,2026-09-21,1500.00,paid,B129 Content Day
+INV-1127,Magnolia Bridal Boutique,ivy@magnoliabridal.com,2026-09-07,2026-09-21,900.00,paid,Reels Pack 9/7
+INV-1128,Rise & Grind,nadia@riseandgrind.fm,2026-09-08,2026-09-22,300.00,paid,Podcast Studio 2hr 9/7
+INV-1129,Kingsley Builders,rosa@kingsley.build,2026-09-10,2026-09-24,1500.00,unpaid,B134 Content Day
+INV-1130,Ben Grant,ben@hillcrestroofingco.com,2026-09-10,2026-09-24,900.00,paid,
+INV-1131,Ironclad Church,media@ironcladdfw.org,2026-09-11,2026-09-25,255.00,paid,
+INV-1132,Luna,paula@lunamedspa.com,2026-09-13,2026-09-27,900.00,paid,
+INV-1133,Vista Gym,carlos@vistagym.co,2026-09-14,2026-09-28,900.00,paid,B139 Reels Pack
+INV-1134,Ironclad DFW,media@ironcladdfw.org,2026-09-16,2026-09-30,255.00,paid,
+INV-1135,Stone Bridge Realty,paula@stonebridgerealty.com,2026-09-16,2026-09-30,1500.00,paid,B147 Content Day
+INV-1136,Bloom Athletics,megan@bloomathletics.com,2026-09-17,2026-10-01,900.00,paid,
+INV-1137,Rise & Grind Podcast,nadia@riseandgrind.fm,2026-09-18,2026-10-02,300.00,paid,Podcast Studio 2hr 9/18
+INV-1138,Raj Park,raj@metroplexmakers.fm,2026-09-19,2026-10-03,550.00,paid,B141 Podcast Studio 4hr
+INV-1139,Crown Barbershop,derek@crownbarbers.com,2026-09-20,2026-10-04,900.00,paid,B143 Reels Pack
+INV-1140,Ironclad DFW,media@ironcladdfw.org,2026-09-21,2026-10-05,255.00,unpaid,
+INV-1141,Sterling Coffee Roasters,tasha@sterlingcoffee.com,2026-09-22,2026-10-06,900.00,unpaid,B145 Reels Pack
+INV-1142,Lumen Social,aisha@lumenmktg.com,2026-09-23,2026-10-07,900.00,paid,
+INV-1143,Paula Haddad,paula@stonebridgerealty.com,2026-09-23,2026-10-07,1500.00,unpaid,Content Day 9/23
+INV-1144,Stone Bridge Realty LLC,paula@stonebridgerealty.com,2026-09-26,2026-10-10,1500.00,unpaid,
+INV-1145,Rise and Grind,nadia@riseandgrind.fm,2026-09-28,2026-10-12,300.00,unpaid,B151 Podcast Studio 2hr
+INV-1146,Green Family Law,info@greenfamilylaw.com,2026-09-29,2026-10-13,900.00,unpaid,B149 Reels Pack
+INV-1147,Lumen Social,aisha@lumenmktg.com,2026-09-30,2026-10-14,900.00,unpaid,Reels Pack 9/28
+INV-1148,Ironclad Media Team,media@ironcladdfw.org,2026-09-30,2026-10-14,255.00,unpaid,B150 Podcast Studio 2hr
+INV-1149,Oak Lane WP,jromero@oaklanewp.com,2026-10-01,2026-10-15,2500.00,unpaid,Monthly retainer October
+INV-1150,Metroplex Makers,raj@metroplexmakers.fm,2026-10-01,2026-10-15,550.00,unpaid,
+INV-1151,Dr. Tran,drtran@keystonechiro.com,2026-10-01,2026-10-15,2500.00,unpaid,Monthly retainer October
+INV-1152,Mendez,info@mendezlaw.com,2026-10-01,2026-10-15,2500.00,unpaid,Monthly retainer October
+INV-1153,Mesquite Roofing,jordan@mesquiteroofingco.com,2026-10-02,2026-10-16,900.00,unpaid,
+INV-1154,Riverbend Coffee Roasters,mia@riverbendcoffee.com,2026-10-05,2026-10-19,900.00,unpaid,
+INV-1155,Ironclad Media Team,media@ironcladdfw.org,2026-10-06,2026-10-20,255.00,unpaid,
+INV-1156,Daniels Detailing,trent.daniels.detail@gmail.com,2026-10-06,2026-10-20,900.00,unpaid,
+INV-1157,R&G Podcast,nadia@riseandgrind.fm,2026-10-06,2026-10-20,300.00,unpaid,
+INV-1158,Apex Med Spa - Frisco,lena@apexmedspa.com,2026-06-13,2026-06-27,1500.00,void,B041 Content Day

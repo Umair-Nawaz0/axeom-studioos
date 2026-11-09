@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Warm paper + deep ink + restrained clay palette */
+  --app-bg: #F6F4EF;              /* Warm paper background */
+  --canvas: #F6F4EF;
+  --surface: #FFFFFF;             /* Clean card / dialog surface */
+  --surface-muted: #F0EEE8;       /* Subtle inset surface */
+  --surface-hover: #F8F6F1;       /* Quiet hover surface */
+  --sidebar-bg: #202B28;          /* Deep charcoal-green sidebar */
+  --sidebar-text: #F5F4EF;        /* Readable light navigation text */
+  --sidebar-muted: #B8C2BC;       /* Secondary sidebar text */
+
+  --text-primary: #202A26;        /* Main ink */
+  --text-secondary: #65716B;      /* Secondary text */
+  --text-muted: #849089;          /* Helper text */
+  --border: #E5E1D8;              /* Warm neutral border */
+  --border-subtle: #ECE8E0;
+
+  --brand: #C56B4C;               /* Restrained clay/coral primary accent */
+  --brand-primary: #C56B4C;
+  --brand-hover: #A9573D;         /* Hover state */
+  --brand-soft: #F7EAE4;          /* Soft accent background */
+
+  --success: #39765A;             /* Muted green */
+  --success-bg: #EDF5EF;
+  --success-border: #C8E3D2;
+
+  --warning: #A86D2E;             /* Warm amber */
+  --warning-bg: #FBF3E7;
+  --warning-border: #F3DCBC;
+
+  --danger: #B44D45;              /* Muted red */
+  --danger-bg: #F9ECEA;
+  --danger-border: #F1C8C4;
+  --critical: #B44D45;
+  --critical-bg: #F9ECEA;
+  --critical-border: #F1C8C4;
+
+  --info: #47758A;                /* Muted blue */
+  --info-bg: #EDF3F6;
+  --info-border: #C9DEE8;
+}
+
+body {
+  color: var(--text-primary);
+  background-color: var(--app-bg);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessible focus ring */
+*:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* Subtle clean scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5ce;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #aab8ad;
+}
+
+@layer utilities {
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
