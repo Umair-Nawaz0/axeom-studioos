@@ -209,13 +209,18 @@ def get_pool(schema: str = None):
             "user": settings.DB_USER,
             "minconn": 1,
             "maxconn": 20,
-            "options": f"-c search_path={target_schema},public",
         }
+        # Neon / PgBouncer poolers do not allow search_path in startup parameters
+        if target_schema != "public" and "pooler" not in (settings.DB_HOST or ""):
+            params["options"] = f"-c search_path={target_schema},public"
+
         if settings.DB_HOST:
             params["host"] = settings.DB_HOST
             params["port"] = settings.DB_PORT
         if settings.DB_PASSWORD:
             params["password"] = settings.DB_PASSWORD
+        if getattr(settings, "DB_SSLMODE", None):
+            params["sslmode"] = settings.DB_SSLMODE
 
         _pools[target_schema] = ThreadedConnectionPool(**params)
         ensure_schema_initialized(target_schema)
@@ -224,10 +229,13 @@ def get_pool(schema: str = None):
 
 @contextmanager
 def get_db(schema: str = None):
-    pool = get_pool(schema)
+    target_schema = schema or get_active_schema()
+    pool = get_pool(target_schema)
     conn = pool.getconn()
     try:
         with conn.cursor(cursor_factory=RealDictCursor) as cur:
+            if target_schema != "public":
+                cur.execute(f"SET search_path TO {target_schema},public;")
             yield cur
         conn.commit()
     except Exception:

@@ -40,12 +40,14 @@ class Settings:
         DB_PASSWORD: str = unquote(_u.password) if _u.password else os.getenv("DB_PASSWORD", "")
         DB_HOST: str = _u.hostname or os.getenv("DB_HOST", "")
         DB_PORT: int = _u.port or int(os.getenv("DB_PORT", "5432"))
+        DB_SSLMODE: str = os.getenv("DB_SSLMODE", "require")
     else:
         DB_NAME: str = os.getenv("DB_NAME", "axeom_db")
         DB_USER: str = os.getenv("DB_USER", "umair")
         DB_PASSWORD: str = os.getenv("DB_PASSWORD", "")
         DB_HOST: str = os.getenv("DB_HOST", "")  # empty string defaults to Unix domain socket
         DB_PORT: int = int(os.getenv("DB_PORT", "5432"))
+        DB_SSLMODE: str = os.getenv("DB_SSLMODE", "")
     DB_SCHEMA: str = os.getenv("DB_SCHEMA", "public")
 
     # Google Gemini API configuration (Gemini is the ONLY AI provider for message classification)
