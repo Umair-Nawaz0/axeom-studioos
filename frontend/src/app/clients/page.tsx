@@ -146,7 +146,7 @@ export default function ClientsPage() {
           return c.entity_type === "payer";
         }
         if (filterMode === "attention") {
-          return c.risk_score === "High" || c.canonical_name.toLowerCase().includes("keystone");
+          return c.risk_score === "High" || c.health_status === "critical";
         }
         if (filterMode === "active_work") {
           return (c.total_videos || 0) > 0 || (c.total_bookings || 0) > 0;
@@ -169,15 +169,11 @@ export default function ClientsPage() {
   }, [clients, searchQuery, filterMode, sortBy, sortOrder]);
 
   const urgentAttentionCount = serviceClients.filter(
-    (c) => c.risk_score === "High" || c.canonical_name.toLowerCase().includes("keystone")
+    (c) => c.risk_score === "High" || c.health_status === "critical"
   ).length;
 
   const renderHealthBadge = (client: ClientItem) => {
-    const isKeystone = client.canonical_name.toLowerCase().includes("keystone");
-    if (isKeystone) {
-      return <StatusBadge label="Urgent Contract Alert" variant="critical" />;
-    }
-    if (client.health_status === "critical") {
+    if (client.risk_score === "High" || client.health_status === "critical") {
       return <StatusBadge label="Critical Risk" variant="critical" />;
     }
     if (client.health_status === "at_risk") {
@@ -194,8 +190,8 @@ export default function ClientsPage() {
     }
     return (
       <StatusBadge
-        label={client.risk_score === "High" ? "Needs follow-up" : "Healthy"}
-        variant={client.risk_score === "High" ? "warning" : "success"}
+        label={client.risk_score === "Medium" ? "Needs follow-up" : "Healthy"}
+        variant={client.risk_score === "Medium" ? "warning" : "success"}
       />
     );
   };
@@ -224,7 +220,11 @@ export default function ClientsPage() {
       {/* Header */}
       <PageHeader
         title="Clients"
-        description={`${serviceClients.length} studio clients + ${payers.length} third-party billing agency payer (Lumen Social).`}
+        description={
+          payers.length > 0
+            ? `${serviceClients.length} studio clients and ${payers.length} third-party billing ${payers.length === 1 ? "entity" : "entities"}.`
+            : `${serviceClients.length} studio clients.`
+        }
         actions={
           <button
             onClick={loadClients}
@@ -325,19 +325,19 @@ export default function ClientsPage() {
             <div className="p-4 bg-surface border border-border rounded-xl">
               <span className="text-xs text-ink-muted block">Canonical Clients</span>
               <span className="text-xl font-bold text-ink-primary tabular-nums">
-                {identityData?.canonical_clients_count ?? 30}
+                {identityData?.canonical_clients_count ?? 0}
               </span>
             </div>
             <div className="p-4 bg-surface border border-border rounded-xl">
               <span className="text-xs text-ink-muted block">Third-Party Payers</span>
               <span className="text-xl font-bold text-brand tabular-nums">
-                {identityData?.third_party_payers_count ?? 1}
+                {identityData?.third_party_payers_count ?? 0}
               </span>
             </div>
             <div className="p-4 bg-surface border border-border rounded-xl">
               <span className="text-xs text-ink-muted block">Resolved Domain Typos</span>
               <span className="text-xl font-bold text-status-success tabular-nums">
-                {identityData?.typo_records_resolved?.length ?? 1}
+                {identityData?.typo_records_resolved?.length ?? 0}
               </span>
             </div>
             <div className="p-4 bg-surface border border-border rounded-xl">
@@ -352,36 +352,43 @@ export default function ClientsPage() {
           </div>
 
           {/* Third-Party Split Billing Relationship */}
-          <div className="p-5 bg-surface border border-border rounded-xl space-y-3">
-            <div className="flex items-center justify-between">
-              <h3 className="font-semibold text-sm text-ink-primary flex items-center gap-2">
-                <Users className="w-4 h-4 text-brand" />
-                <span>Third-Party Billing Resolution (Lumen Social)</span>
-              </h3>
-              <StatusBadge label="Reconciled Split-Billing" variant="success" />
+          {identityData?.payers && identityData.payers.length > 0 && identityData.payers.map((payer: any) => (
+            <div key={payer.id} className="p-5 bg-surface border border-border rounded-xl space-y-3">
+              <div className="flex items-center justify-between">
+                <h3 className="font-semibold text-sm text-ink-primary flex items-center gap-2">
+                  <Users className="w-4 h-4 text-brand" />
+                  <span>Third-Party Billing Resolution ({payer.canonical_name})</span>
+                </h3>
+                <StatusBadge label="Reconciled Split-Billing" variant="success" />
+              </div>
+              <p className="text-xs text-ink-secondary leading-relaxed">
+                <strong>{payer.canonical_name}</strong> is verified as a third-party billing entity.
+                {payer.pays_for && payer.pays_for.length > 0 ? (
+                  <> All invoices issued under {payer.canonical_name} pay directly for services rendered to <strong>{payer.pays_for.join(" and ")}</strong>.</>
+                ) : null}
+              </p>
             </div>
-            <p className="text-xs text-ink-secondary leading-relaxed">
-              Lumen Social LLC (Contact: Aisha Novak) is verified as a third-party billing agency.
-              All invoices issued under Lumen Social pay directly for services rendered to
-              <strong> Ridgeway Pediatrics</strong> and <strong>Northpoint Physical Therapy</strong>.
-            </p>
-          </div>
+          ))}
 
           {/* Corroborated Domain Typo Resolution */}
-          <div className="p-5 bg-surface border border-border rounded-xl space-y-3">
-            <div className="flex items-center justify-between">
-              <h3 className="font-semibold text-sm text-ink-primary flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-status-success" />
-                <span>Corroborated Domain Typo Resolution (.con → .com)</span>
-              </h3>
-              <StatusBadge label="Corroborated & Preserved" variant="info" />
+          {identityData?.typo_records_resolved && identityData.typo_records_resolved.length > 0 && (
+            <div className="p-5 bg-surface border border-border rounded-xl space-y-3">
+              <div className="flex items-center justify-between">
+                <h3 className="font-semibold text-sm text-ink-primary flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-status-success" />
+                  <span>Corroborated Domain Typo Resolution ({identityData.typo_records_resolved.length} resolved)</span>
+                </h3>
+                <StatusBadge label="Corroborated & Preserved" variant="info" />
+              </div>
+              <div className="space-y-1.5 text-xs text-ink-secondary leading-relaxed">
+                {identityData.typo_records_resolved.map((typo: any, idx: number) => (
+                  <p key={idx}>
+                    Record <strong>{typo.record_id}</strong> in <code className="font-mono text-[11px]">{typo.table}</code> recorded client <strong>{typo.name}</strong> with typo <code className="font-mono text-[11px]">{typo.raw_email}</code>. Corroborated with invoices and client master to resolve to canonical identity without data loss.
+                  </p>
+                ))}
+              </div>
             </div>
-            <p className="text-xs text-ink-secondary leading-relaxed">
-              Record <strong>B025</strong> in <code>bookings.csv</code> recorded client Joy Green DDS with typo
-              <code>hello@greendental.con</code>. Corroborated with invoices and client master to resolve to canonical
-              <strong> Joy Green DDS</strong> without data loss.
-            </p>
-          </div>
+          )}
 
           {/* Unlinked Records Review Queue */}
           <div className="p-5 bg-surface border border-border rounded-xl space-y-3">
@@ -401,7 +408,7 @@ export default function ClientsPage() {
               <div className="p-4 bg-status-success-bg/40 border border-status-success-border rounded-lg text-xs text-status-success flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 shrink-0" />
                 <span>
-                  100% Reconciliation Coverage: All 21 bookings, 17 invoices, 15 videos, and 190 messages are corroborated to canonical client entities. Zero unlinked or orphaned records.
+                  100% Reconciliation Coverage: All ingested records are corroborated to canonical client entities. Zero unlinked or orphaned records.
                 </span>
               </div>
             ) : (
@@ -523,17 +530,14 @@ export default function ClientsPage() {
               </thead>
               <tbody className="divide-y divide-border">
                 {filteredClients.map((c) => {
-                  const isKeystone = c.canonical_name.toLowerCase().includes("keystone");
-                  const isHighRisk = c.risk_score === "High" || isKeystone;
+                  const isHighRisk = c.risk_score === "High" || c.health_status === "critical";
                   const isPayer = c.entity_type === "payer";
 
                   return (
                     <tr
                       key={c.id}
                       className={`hover:bg-surface-muted/40 transition-colors group cursor-pointer ${
-                        isKeystone
-                          ? "bg-status-critical-bg/20"
-                          : isHighRisk
+                        isHighRisk
                           ? "bg-status-warning-bg/10"
                           : ""
                       }`}
@@ -547,7 +551,7 @@ export default function ClientsPage() {
                         </Link>
                         {isPayer && (
                           <span className="mt-1 inline-block px-2 py-0.5 rounded bg-brand-soft text-brand text-[11px] font-medium border border-[#cbe0d6]">
-                            Third-Party Payer (Pays for Ridgeway Pediatrics & Northpoint Physical Therapy)
+                            {c.pays_for && c.pays_for.length > 0 ? `Third-Party Payer (Pays for ${c.pays_for.join(" & ")})` : "Third-Party Payer"}
                           </span>
                         )}
                         {c.billed_via_payer && (
@@ -598,8 +602,7 @@ export default function ClientsPage() {
           {/* MOBILE CARDS */}
           <div className="md:hidden space-y-3">
             {filteredClients.map((c) => {
-              const isKeystone = c.canonical_name.toLowerCase().includes("keystone");
-              const isHighRisk = c.risk_score === "High" || isKeystone;
+              const isHighRisk = c.risk_score === "High" || c.health_status === "critical";
               const isPayer = c.entity_type === "payer";
 
               return (
@@ -607,8 +610,8 @@ export default function ClientsPage() {
                   key={c.id}
                   href={`/clients/${c.id}`}
                   className={`p-4 bg-surface border rounded-xl shadow-xs block space-y-2.5 active:bg-surface-muted transition-colors ${
-                    isKeystone
-                      ? "border-status-critical bg-status-critical-bg/20"
+                    isHighRisk
+                      ? "border-status-critical/60 bg-status-critical-bg/15"
                       : isPayer
                       ? "border-brand bg-brand-soft/20"
                       : "border-border"

@@ -830,7 +830,7 @@ async function fetchApi<T>(endpoint: string, options?: RequestInit): Promise<T> 
     return await res.json();
   } catch (err: any) {
     if (err.message?.includes("Failed to fetch") || err.message?.includes("NetworkError")) {
-      throw new Error("Unable to reach Axeom backend. Please ensure the FastAPI server is running on port 8000.");
+      throw new Error("Unable to reach the studio backend. Please check your network connection or try again.");
     }
     throw err;
   }

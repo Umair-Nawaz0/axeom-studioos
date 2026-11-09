@@ -135,7 +135,7 @@ export default function ProductionPage() {
     return (
       <ErrorState
         title="Could not load production pipeline"
-        message={error || "Ensure the FastAPI backend server is running on http://localhost:8000."}
+        message={error || "Unable to reach the studio backend. Please check your network connection or try reloading."}
         onRetry={loadProduction}
       />
     );
@@ -201,7 +201,7 @@ export default function ProductionPage() {
               </button>
             </div>
 
-            {/* List of the 6 flagged privacy videos */}
+            {/* List of flagged privacy videos */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 pt-1">
               {privacyVideos.map((pv) => (
                 <div
@@ -231,7 +231,7 @@ export default function ProductionPage() {
                   </div>
                   {pv.privacy_board_missing && (
                     <p className="text-[11px] text-status-critical font-normal mt-1 leading-tight">
-                      Stonebridge Realty Group voice note (line #126) requested face blur, but board is blank!
+                      Client voice note requested face blur, but board note was left blank!
                     </p>
                   )}
                 </div>
@@ -255,28 +255,28 @@ export default function ProductionPage() {
 
         {/* Distribution Progress Bar */}
         <div className="h-2.5 w-full bg-surface-muted rounded-full overflow-hidden flex">
-          {deliveredCount > 0 && (
+          {deliveredCount > 0 && totalAllVideos > 0 && (
             <div
               style={{ width: `${(deliveredCount / totalAllVideos) * 100}%` }}
               className="bg-status-success h-full transition-all"
               title={`Delivered: ${deliveredCount}`}
             />
           )}
-          {inEditCount > 0 && (
+          {inEditCount > 0 && totalAllVideos > 0 && (
             <div
               style={{ width: `${(inEditCount / totalAllVideos) * 100}%` }}
               className="bg-brand h-full transition-all"
               title={`In edit: ${inEditCount}`}
             />
           )}
-          {inReviewCount > 0 && (
+          {inReviewCount > 0 && totalAllVideos > 0 && (
             <div
               style={{ width: `${(inReviewCount / totalAllVideos) * 100}%` }}
               className="bg-status-warning h-full transition-all"
               title={`In review: ${inReviewCount}`}
             />
           )}
-          {inRevisionCount > 0 && (
+          {inRevisionCount > 0 && totalAllVideos > 0 && (
             <div
               style={{ width: `${(inRevisionCount / totalAllVideos) * 100}%` }}
               className="bg-status-critical h-full transition-all"
@@ -695,7 +695,7 @@ export default function ProductionPage() {
                   </div>
                   <p className="leading-relaxed">
                     {selectedVideo.privacy_board_missing
-                      ? "CRITICAL: Stonebridge Realty Group voice note requested client face blur for this video, but the production board note was left blank. Visual verification required before posting!"
+                      ? "CRITICAL: Client voice note requested face blur for this video, but the production board note was left blank. Visual verification required before posting!"
                       : "Patient/client in video did not sign a media release. Board has 'Blur client face' note, but visual verification of exported video is required."}
                   </p>
                 </div>

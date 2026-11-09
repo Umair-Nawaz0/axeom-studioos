@@ -460,49 +460,54 @@ export default function RequestsPage() {
       {/* SECTION 1: UNANSWERED LEADS & REFERRALS */}
       {activeTab === "leads" && (
         <div className="space-y-4">
-          {/* Spotlight banner for 13 legitimate never-replied leads */}
-          <div className="p-4 bg-status-critical-bg/40 border border-status-critical-border rounded-xl space-y-2.5">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
-              <div className="flex items-center gap-2.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-status-critical shrink-0 animate-pulse" />
-                <h3 className="font-semibold text-sm text-status-critical">
-                  13 High-Intent Commercial Prospects Never Received Any Reply
-                </h3>
+          {/* Spotlight banner for legitimate never-replied leads */}
+          {(leadsData?.legitimate_unanswered_count || 0) > 0 && (
+            <div className="p-4 bg-status-critical-bg/40 border border-status-critical-border rounded-xl space-y-2.5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-status-critical shrink-0 animate-pulse" />
+                  <h3 className="font-semibold text-sm text-status-critical">
+                    {leadsData?.legitimate_unanswered_count} High-Intent Commercial Prospects Never Received Any Reply
+                  </h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setLeadsFilter("legitimate")}
+                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer shadow-xs shrink-0 ${
+                    leadsFilter === "legitimate"
+                      ? "bg-status-critical text-white"
+                      : "bg-surface border border-status-critical-border text-status-critical hover:bg-status-critical hover:text-white"
+                  }`}
+                >
+                  <span>{leadsFilter === "legitimate" ? `Viewing ${leadsData?.legitimate_unanswered_count} Never-Replied` : `Filter to ${leadsData?.legitimate_unanswered_count} Never-Replied`}</span>
+                  <span>→</span>
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={() => setLeadsFilter("legitimate")}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer shadow-xs shrink-0 ${
-                  leadsFilter === "legitimate"
-                    ? "bg-status-critical text-white"
-                    : "bg-surface border border-status-critical-border text-status-critical hover:bg-status-critical hover:text-white"
-                }`}
-              >
-                <span>{leadsFilter === "legitimate" ? "Viewing 13 Never-Replied" : "Filter to 13 Never-Replied"}</span>
-                <span>→</span>
-              </button>
+              <p className="text-xs text-ink-secondary leading-relaxed">
+                Out of {unansweredLeads.length} unreplied inquiries in the leads pipeline,{" "}
+                {leadsData?.junk_unanswered_count || 0} are identified as bot/spam entries and{" "}
+                {leadsData?.existing_client_unanswered_count || 0} are website submissions from existing active clients. The remaining{" "}
+                <strong className="text-status-critical">{leadsData?.legitimate_unanswered_count} are legitimate commercial prospects</strong> across acquisition channels that received zero reply from studio staff.
+              </p>
             </div>
-            <p className="text-xs text-ink-secondary leading-relaxed">
-              Out of 20 unreplied rows in <code className="font-mono bg-canvas px-1.5 py-0.5 rounded text-ink-primary font-semibold">leads.csv</code>, 4 are bot/spam entries and 3 are website form submissions from existing active clients (including Tanya Tran at Keystone Chiropractic requesting urgent contract review). The remaining <strong className="text-status-critical">13 are legitimate commercial prospects</strong> across Meta ads, Google, Instagram, Website, Referral, and LinkedIn that received zero reply from studio staff.
-            </p>
-          </div>
+          )}
 
           <div className="p-3.5 bg-surface-muted/50 border border-border rounded-xl text-xs sm:text-sm text-ink-secondary flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <span>
-                <strong>{unansweredLeads.length} rows</strong> in <code className="font-mono">leads.csv</code> have no recorded reply:{" "}
-                <strong className="text-status-critical">{leadsData?.legitimate_unanswered_count ?? 13}</strong> legitimate prospects,{" "}
-                <strong>{leadsData?.existing_client_unanswered_count ?? 3}</strong> website forms from existing clients, and{" "}
-                <strong>{leadsData?.junk_unanswered_count ?? 4}</strong> junk/test rows.
+                <strong>{unansweredLeads.length} inquiries</strong> have no recorded reply:{" "}
+                <strong className="text-status-critical">{leadsData?.legitimate_unanswered_count ?? 0}</strong> legitimate prospects,{" "}
+                <strong>{leadsData?.existing_client_unanswered_count ?? 0}</strong> website forms from existing clients, and{" "}
+                <strong>{leadsData?.junk_unanswered_count ?? 0}</strong> junk/test rows.
               </span>
             </div>
             <div className="flex items-center gap-1.5 flex-wrap">
               {(
                 [
                   ["unanswered", `All Unanswered (${unansweredLeads.length})`],
-                  ["legitimate", `13 Never Replied (${leadsData?.legitimate_unanswered_count ?? 13})`],
-                  ["existing_client", `Existing Clients (${leadsData?.existing_client_unanswered_count ?? 3})`],
-                  ["spam", `Spam/Test (${leadsData?.junk_unanswered_count ?? 4})`],
+                  ["legitimate", `Legitimate Unreplied (${leadsData?.legitimate_unanswered_count ?? 0})`],
+                  ["existing_client", `Existing Clients (${leadsData?.existing_client_unanswered_count ?? 0})`],
+                  ["spam", `Spam/Test (${leadsData?.junk_unanswered_count ?? 0})`],
                   ["all_leads", `All Leads (${allLeads.length})`],
                 ] as const
               ).map(([key, label]) => (
@@ -641,21 +646,23 @@ export default function RequestsPage() {
       {/* SECTION 2: MISSED CLIENT VOICE NOTES */}
       {activeTab === "lost_requests" && (
         <div className="space-y-3">
-          <div className="p-3.5 bg-status-warning-bg/40 border border-status-warning-border rounded-xl text-xs sm:text-sm text-ink-secondary space-y-1">
-            <div className="flex items-center justify-between font-semibold text-ink-primary flex-wrap gap-2">
-              <span>
-                All {lostRequests.length} client voice notes had 0 board entries ({lostData?.repeated_complaints?.length ?? 22} escalated into complaints)
-              </span>
-              {lostData?.lost_requests_started_getting_worse_in && (
-                <span className="text-xs text-status-warning font-medium">
-                  Root cause: {lostData.lost_requests_started_getting_worse_in}
+          {lostRequests.length > 0 && (
+            <div className="p-3.5 bg-status-warning-bg/40 border border-status-warning-border rounded-xl text-xs sm:text-sm text-ink-secondary space-y-1">
+              <div className="flex items-center justify-between font-semibold text-ink-primary flex-wrap gap-2">
+                <span>
+                  All {lostRequests.length} client voice notes had 0 board entries ({lostData?.repeated_complaints?.length ?? 0} escalated into complaints)
                 </span>
-              )}
+                {lostData?.lost_requests_started_getting_worse_in && (
+                  <span className="text-xs text-status-warning font-medium">
+                    Root cause: {lostData.lost_requests_started_getting_worse_in}
+                  </span>
+                )}
+              </div>
+              <p className="text-xs leading-relaxed text-ink-secondary">
+                Client voice note revision requests were received across messaging channels without corresponding tracking entries on the active production board.
+              </p>
             </div>
-            <p className="text-xs leading-relaxed text-ink-secondary">
-              On June 1, 2026 (Message #28), the studio invited clients to send edit revisions via voice notes, but no workflow existed to transcribe voice notes onto <code className="font-mono">production_board.csv</code>.
-            </p>
-          </div>
+          )}
 
           {filteredLostRequests.length === 0 ? (
             <EmptyState
@@ -943,8 +950,12 @@ export default function RequestsPage() {
                 />
                 <MetricCard
                   label="Never replied inquiries"
-                  value={`${leadsData?.legitimate_unanswered_count ?? 13} legitimate`}
-                  subtext={`${channelTotals.unrepliedLeads} total unreplied (13 legit, 3 client forms, 4 junk)`}
+                  value={`${leadsData?.legitimate_unanswered_count ?? 0} legitimate`}
+                  subtext={
+                    channelTotals.unrepliedLeads > 0
+                      ? `${channelTotals.unrepliedLeads} total unreplied (${leadsData?.legitimate_unanswered_count ?? 0} legit, ${leadsData?.existing_client_unanswered_count ?? 0} client forms, ${leadsData?.junk_unanswered_count ?? 0} junk)`
+                      : "No unreplied inquiries"
+                  }
                   icon={<AlertTriangle className="w-4 h-4 text-status-critical" />}
                   variant="critical"
                 />
@@ -1056,7 +1067,7 @@ export default function RequestsPage() {
                         <td className="py-3.5 px-3 text-center tabular-nums font-bold text-status-warning">
                           {channelTotals.unrepliedLeads}{" "}
                           <span className="text-[10px] text-ink-muted font-normal block">
-                            ({leadsData?.legitimate_unanswered_count ?? 13} legit)
+                            ({leadsData?.legitimate_unanswered_count ?? 0} legit)
                           </span>
                         </td>
                         <td className="py-3.5 px-4 text-center tabular-nums font-bold text-brand">

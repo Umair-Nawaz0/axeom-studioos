@@ -70,8 +70,8 @@ export default function MoneyPage() {
   const displayedOverdue = overdueMode === "reconciled" ? reconciledOverdue : sourceOverdue;
   const displayedOverdueTotal =
     overdueMode === "reconciled"
-      ? data?.overdue_total ?? "9505.00"
-      : data?.source_overdue_total ?? data?.overdue_total ?? "12055.00";
+      ? data?.overdue_total ?? "0.00"
+      : data?.source_overdue_total ?? data?.overdue_total ?? "0.00";
 
   const billingErrors = data?.billing_tool_is_wrong || [];
   const neverBilled = data?.never_billed_items || [];
@@ -124,7 +124,7 @@ export default function MoneyPage() {
     return (
       <ErrorState
         title="Could not load financial records"
-        message={error || "Ensure the FastAPI backend server is running on http://localhost:8000."}
+        message={error || "Unable to reach the studio backend. Please check your network connection or try reloading."}
         onRetry={loadFinance}
       />
     );
@@ -172,8 +172,12 @@ export default function MoneyPage() {
           {/* Card 1: Bank Collections */}
           <MetricCard
             label="Bank collections received"
-            value={formatCurrency(data.total_collected_in_bank)}
-            subtext={`${paymentsLedger.length || 129} verified bank receipts`}
+            value={formatCurrency(data.total_collected_in_bank ?? 0)}
+            subtext={
+              paymentsLedger.length > 0
+                ? `${paymentsLedger.length} verified bank receipts`
+                : "No bank receipts recorded"
+            }
             icon={<CheckCircle2 className="w-4 h-4 text-status-success" />}
             variant="success"
           />
@@ -181,8 +185,12 @@ export default function MoneyPage() {
           {/* Card 2: Confirmed Overdue as of Scenario Date */}
           <MetricCard
             label="Confirmed overdue"
-            value={formatCurrency(data.overdue_total)}
-            subtext={`${reconciledOverdue.length} reconciled invoices past due date (as of ${refDate})`}
+            value={formatCurrency(data.overdue_total ?? 0)}
+            subtext={
+              reconciledOverdue.length > 0
+                ? `${reconciledOverdue.length} reconciled invoices past due date (as of ${refDate})`
+                : "No overdue invoices"
+            }
             icon={<Clock className="w-4 h-4 text-status-critical" />}
             variant="critical"
           />
@@ -190,8 +198,12 @@ export default function MoneyPage() {
           {/* Card 3: Studio Liabilities / Customer Credits */}
           <MetricCard
             label="Customer credits to review"
-            value={formatCurrency(weOweTotal || 2400)}
-            subtext="Duplicate payment on INV-1095 ($900) & rescheduled shoot credit ($1,500)"
+            value={formatCurrency(weOweTotal || 0)}
+            subtext={
+              weOweItems.length > 0
+                ? `${weOweItems.length} client credit items requiring owner action`
+                : "No pending client credits or liabilities"
+            }
             icon={<AlertTriangle className="w-4 h-4 text-status-warning" />}
             variant="warning"
           />
@@ -199,8 +211,12 @@ export default function MoneyPage() {
           {/* Card 4: Completed Work to Review for Billing */}
           <MetricCard
             label="Work to review for billing"
-            value={formatCurrency(data.never_billed_total)}
-            subtext={`${neverBilled.length} completed shoots ($2,400 confirmed + $255 review)`}
+            value={formatCurrency(data.never_billed_total ?? 0)}
+            subtext={
+              neverBilled.length > 0
+                ? `${neverBilled.length} completed shoots awaiting billing verification`
+                : "All completed shoots have been billed"
+            }
             icon={<Receipt className="w-4 h-4 text-brand" />}
             variant="neutral"
           />
@@ -282,7 +298,7 @@ export default function MoneyPage() {
                 <span>Strict Scenario Date Cutoff: <code className="font-mono bg-surface-muted px-1.5 py-0.5 rounded text-ink-primary">due_date &lt; {refDate}</code></span>
               </div>
               <p className="text-ink-secondary">
-                Invoices due on {refDate} (e.g. INV-1141) are <strong>Due today</strong>, not overdue. Future invoices (INV-1143+) are <strong>Not yet due</strong>.
+                Invoices due on {refDate} are considered <strong>Due today</strong>. Invoices with due dates after {refDate} are <strong>Not yet due</strong>.
               </p>
             </div>
 
@@ -468,7 +484,7 @@ export default function MoneyPage() {
       {activeTab === "never_billed" && (
         <section className="space-y-3" aria-label="Unbilled work">
           <div className="p-3 bg-surface border border-border rounded-xl text-xs text-ink-secondary">
-            Completed shoots without a candidate invoice. Note: <strong>{data.retainer_covered_bookings_count ?? 19}</strong> retainer shoots ($0 booking price) are covered under client monthly retainers and are not considered missing invoices.
+            Completed shoots without a candidate invoice. Note: <strong>{data.retainer_covered_bookings_count ?? 0}</strong> retainer shoots ($0 booking price) are covered under client monthly retainers and are not considered missing invoices.
           </div>
 
           {neverBilled.length === 0 ? (

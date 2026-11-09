@@ -170,7 +170,7 @@ export default function TodayPage() {
     return (
       <ErrorState
         title="Could not load Today overview"
-        message={error || "Ensure the FastAPI backend server is running on http://localhost:8000."}
+        message={error || "Unable to reach the studio backend. Please check your network connection or try reloading."}
         onRetry={loadData}
       />
     );
@@ -557,7 +557,7 @@ export default function TodayPage() {
           </section>
 
           {/* 4. COMPACT MARKETING ACQUISITION INSIGHT (SECONDARY CARD) */}
-          {marketing?.best_marketing_channel && (
+          {marketing?.best_marketing_channel && (marketing.best_marketing_channel.total_leads || 0) > 0 && (
             <section aria-label="Marketing acquisition insight" className="pt-1">
               <div className="p-4 sm:p-5 bg-surface rounded-xl border border-border shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="flex items-start sm:items-center gap-3.5">
@@ -577,11 +577,11 @@ export default function TodayPage() {
                       </strong>{" "}
                       achieved the highest observed conversion at{" "}
                       <strong className="font-semibold text-brand">
-                        {(marketing.best_marketing_channel.conversion_rate ?? 78.6).toFixed(1)}%
+                        {(marketing.best_marketing_channel.conversion_rate ?? 0).toFixed(1)}%
                       </strong>{" "}
-                      ({marketing.best_marketing_channel.won_leads ?? 11} won out of{" "}
-                      {marketing.best_marketing_channel.total_leads ?? 14} leads,{" "}
-                      {formatCurrency(marketing.best_marketing_channel.attributed_revenue ?? 66800)} attributed revenue).
+                      ({marketing.best_marketing_channel.won_leads ?? 0} won out of{" "}
+                      {marketing.best_marketing_channel.total_leads ?? 0} leads,{" "}
+                      {formatCurrency(marketing.best_marketing_channel.attributed_revenue ?? 0)} attributed revenue).
                       <span className="text-ink-secondary block sm:inline sm:ml-1">
                         Advertising spend is missing from costs, so net channel profitability cannot be proven.
                       </span>
