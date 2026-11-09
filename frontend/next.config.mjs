@@ -2,7 +2,7 @@
 const backendUrl =
   process.env.BACKEND_URL ||
   process.env.NEXT_PUBLIC_API_BASE_URL ||
-  "http://localhost:8000";
+  "https://axeom-backend.onrender.com";
 
 const nextConfig = {
   async rewrites() {
