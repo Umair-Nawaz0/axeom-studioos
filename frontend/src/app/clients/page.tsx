@@ -259,10 +259,10 @@ export default function ClientsPage() {
           )}
         </div>
 
-        <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+        <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 flex-nowrap sm:flex-wrap">
           <button
             onClick={() => setFilterMode("all")}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer shrink-0 whitespace-nowrap ${
               filterMode === "all"
                 ? "bg-brand text-white shadow-xs"
                 : "bg-surface text-ink-secondary hover:text-ink-primary border border-border hover:bg-surface-muted"
@@ -272,7 +272,7 @@ export default function ClientsPage() {
           </button>
           <button
             onClick={() => setFilterMode("attention")}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer shrink-0 whitespace-nowrap ${
               filterMode === "attention"
                 ? "bg-brand text-white shadow-xs"
                 : "bg-surface text-ink-secondary hover:text-ink-primary border border-border hover:bg-surface-muted"
@@ -282,7 +282,7 @@ export default function ClientsPage() {
           </button>
           <button
             onClick={() => setFilterMode("active_work")}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer shrink-0 whitespace-nowrap ${
               filterMode === "active_work"
                 ? "bg-brand text-white shadow-xs"
                 : "bg-surface text-ink-secondary hover:text-ink-primary border border-border hover:bg-surface-muted"
@@ -292,7 +292,7 @@ export default function ClientsPage() {
           </button>
           <button
             onClick={() => setFilterMode("payers")}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer shrink-0 whitespace-nowrap ${
               filterMode === "payers"
                 ? "bg-brand text-white shadow-xs"
                 : "bg-surface text-ink-secondary hover:text-ink-primary border border-border hover:bg-surface-muted"

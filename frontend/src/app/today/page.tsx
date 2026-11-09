@@ -308,7 +308,7 @@ export default function TodayPage() {
                     }`}
                   >
                     {/* Header: Urgency badge, Reason, Client, Status */}
-                    <div className="flex items-start justify-between gap-3">
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                       <div className="space-y-1.5 flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="w-5 h-5 rounded-full bg-brand-soft text-brand text-xs font-bold flex items-center justify-center shrink-0">
@@ -318,7 +318,7 @@ export default function TodayPage() {
                             label={action.urgency}
                             variant={action.urgency.toLowerCase() as StatusVariant}
                           />
-                          <span className="text-xs font-medium text-ink-secondary px-2 py-0.5 rounded bg-surface-muted border border-border">
+                          <span className="text-xs font-medium text-ink-secondary px-2 py-0.5 rounded bg-surface-muted border border-border truncate max-w-full">
                             {ctx.reason}
                           </span>
                           {action.client_name && (
@@ -340,7 +340,7 @@ export default function TodayPage() {
                       </div>
 
                       {/* Current review status badge */}
-                      <div className="shrink-0 pt-0.5">
+                      <div className="shrink-0 pt-0.5 self-start sm:self-auto">
                         {isApproved && (
                           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-status-success-bg text-status-success border border-status-success-border">
                             <Check className="w-3.5 h-3.5" />
@@ -391,14 +391,14 @@ export default function TodayPage() {
                       </div>
                     )}
 
-                    {/* Clear actions: Contextual review link + Review/Dismiss state */}
-                    <div className="pt-2.5 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                      <div className="text-xs text-ink-secondary flex items-center gap-1.5">
-                        <span className="font-semibold text-ink-primary">Recommended step:</span>
-                        <span className="truncate max-w-lg">{action.suggested_action}</span>
+                    {/* Clear actions: Contextual review link + Review/Dismiss state (Responsive wrap ensures Mark reviewed never goes off-screen) */}
+                    <div className="pt-3 border-t border-border flex flex-col gap-2.5">
+                      <div className="text-xs text-ink-secondary flex items-start gap-1.5">
+                        <span className="font-semibold text-ink-primary shrink-0">Recommended step:</span>
+                        <span className="leading-relaxed">{action.suggested_action}</span>
                       </div>
 
-                      <div className="flex items-center gap-2 shrink-0">
+                      <div className="flex items-center gap-2 flex-wrap pt-0.5">
                         {/* Prefilled Communication Draft */}
                         <button
                           type="button"
@@ -477,21 +477,21 @@ export default function TodayPage() {
               <span className="text-xs text-ink-muted">As of {data.reference_date}</span>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
               {/* Metric 1: Confirmed Overdue */}
               <Link
                 href="/money"
-                className="group p-4 bg-surface rounded-xl border border-border hover:border-status-critical/40 transition-colors shadow-xs flex flex-col justify-between"
+                className="group p-3.5 sm:p-4 bg-surface rounded-xl border border-border hover:border-status-critical/40 transition-colors shadow-xs flex flex-col justify-between min-w-0 overflow-hidden"
               >
-                <div className="flex items-center justify-between text-xs text-ink-secondary">
-                  <span className="font-medium">Confirmed overdue</span>
-                  <Clock className="w-4 h-4 text-status-critical" />
+                <div className="flex items-center justify-between text-xs text-ink-secondary gap-1.5 min-w-0">
+                  <span className="font-medium truncate">Confirmed overdue</span>
+                  <Clock className="w-4 h-4 text-status-critical shrink-0" />
                 </div>
-                <div className="mt-2.5">
-                  <div className="text-xl sm:text-2xl font-semibold tabular-nums text-status-critical tracking-tight">
+                <div className="mt-2 sm:mt-2.5 min-w-0">
+                  <div className="text-lg xs:text-xl sm:text-2xl font-semibold tabular-nums text-status-critical tracking-tight truncate">
                     {formatCurrency(confirmedOverdue)}
                   </div>
-                  <p className="text-xs text-ink-muted mt-0.5">
+                  <p className="text-[11px] sm:text-xs text-ink-muted mt-0.5 truncate">
                     {overdueCount} reconciled invoices past due
                   </p>
                 </div>
@@ -500,17 +500,17 @@ export default function TodayPage() {
               {/* Metric 2: Legitimate Prospects Awaiting Reply */}
               <Link
                 href="/requests"
-                className="group p-4 bg-surface rounded-xl border border-border hover:border-status-warning/40 transition-colors shadow-xs flex flex-col justify-between"
+                className="group p-3.5 sm:p-4 bg-surface rounded-xl border border-border hover:border-status-warning/40 transition-colors shadow-xs flex flex-col justify-between min-w-0 overflow-hidden"
               >
-                <div className="flex items-center justify-between text-xs text-ink-secondary">
-                  <span className="font-medium">Prospects awaiting reply</span>
-                  <Inbox className="w-4 h-4 text-status-warning" />
+                <div className="flex items-center justify-between text-xs text-ink-secondary gap-1.5 min-w-0">
+                  <span className="font-medium truncate">Prospects awaiting reply</span>
+                  <Inbox className="w-4 h-4 text-status-warning shrink-0" />
                 </div>
-                <div className="mt-2.5">
-                  <div className="text-xl sm:text-2xl font-semibold tabular-nums text-status-warning tracking-tight">
+                <div className="mt-2 sm:mt-2.5 min-w-0">
+                  <div className="text-lg xs:text-xl sm:text-2xl font-semibold tabular-nums text-status-warning tracking-tight truncate">
                     {legitimateLeadsCount} prospects
                   </div>
-                  <p className="text-xs text-ink-muted mt-0.5">
+                  <p className="text-[11px] sm:text-xs text-ink-muted mt-0.5 truncate">
                     Excludes spam & existing clients
                   </p>
                 </div>
@@ -519,17 +519,17 @@ export default function TodayPage() {
               {/* Metric 3: Privacy Release Alerts */}
               <Link
                 href="/production"
-                className="group p-4 bg-surface rounded-xl border border-border hover:border-brand/40 transition-colors shadow-xs flex flex-col justify-between"
+                className="group p-3.5 sm:p-4 bg-surface rounded-xl border border-border hover:border-brand/40 transition-colors shadow-xs flex flex-col justify-between min-w-0 overflow-hidden"
               >
-                <div className="flex items-center justify-between text-xs text-ink-secondary">
-                  <span className="font-medium">Privacy release alerts</span>
-                  <ShieldAlert className="w-4 h-4 text-brand" />
+                <div className="flex items-center justify-between text-xs text-ink-secondary gap-1.5 min-w-0">
+                  <span className="font-medium truncate">Privacy release alerts</span>
+                  <ShieldAlert className="w-4 h-4 text-brand shrink-0" />
                 </div>
-                <div className="mt-2.5">
-                  <div className="text-xl sm:text-2xl font-semibold tabular-nums text-brand tracking-tight">
+                <div className="mt-2 sm:mt-2.5 min-w-0">
+                  <div className="text-lg xs:text-xl sm:text-2xl font-semibold tabular-nums text-brand tracking-tight truncate">
                     {privacyAlertsCount} videos
                   </div>
-                  <p className="text-xs text-ink-muted mt-0.5">
+                  <p className="text-[11px] sm:text-xs text-ink-muted mt-0.5 truncate">
                     Unsigned media releases to verify
                   </p>
                 </div>
@@ -538,17 +538,17 @@ export default function TodayPage() {
               {/* Metric 4: Active Work in Progress */}
               <Link
                 href="/production"
-                className="group p-4 bg-surface rounded-xl border border-border hover:border-ink-secondary/40 transition-colors shadow-xs flex flex-col justify-between"
+                className="group p-3.5 sm:p-4 bg-surface rounded-xl border border-border hover:border-ink-secondary/40 transition-colors shadow-xs flex flex-col justify-between min-w-0 overflow-hidden"
               >
-                <div className="flex items-center justify-between text-xs text-ink-secondary">
-                  <span className="font-medium">Active production</span>
-                  <Film className="w-4 h-4 text-ink-secondary" />
+                <div className="flex items-center justify-between text-xs text-ink-secondary gap-1.5 min-w-0">
+                  <span className="font-medium truncate">Active production</span>
+                  <Film className="w-4 h-4 text-ink-secondary shrink-0" />
                 </div>
-                <div className="mt-2.5">
-                  <div className="text-xl sm:text-2xl font-semibold tabular-nums text-ink-primary tracking-tight">
+                <div className="mt-2 sm:mt-2.5 min-w-0">
+                  <div className="text-lg xs:text-xl sm:text-2xl font-semibold tabular-nums text-ink-primary tracking-tight truncate">
                     {activeWipCount} in progress
                   </div>
-                  <p className="text-xs text-ink-muted mt-0.5">
+                  <p className="text-[11px] sm:text-xs text-ink-muted mt-0.5 truncate">
                     Editing, review, or revision
                   </p>
                 </div>

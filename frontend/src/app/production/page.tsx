@@ -312,7 +312,7 @@ export default function ProductionPage() {
 
       {/* 3. FILTER & SEARCH CONTROLS */}
       <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
-        <div className="flex items-center gap-1.5 flex-wrap">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 flex-nowrap sm:flex-wrap">
           {[
             ["active_wip", `Active WIP (${activeWork.length})`],
             ["needs_attention", `Needs attention (${privacyVideos.length + inRevisionCount})`],
@@ -327,7 +327,7 @@ export default function ProductionPage() {
             <button
               key={key}
               onClick={() => setSelectedFilter(key)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer shrink-0 whitespace-nowrap ${
                 selectedFilter === key
                   ? key === "privacy_alerts" || key === "needs_attention"
                     ? "bg-status-critical text-white shadow-xs"

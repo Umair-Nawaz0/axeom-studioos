@@ -334,24 +334,26 @@ export function AppShell({ children }: AppShellProps) {
       </aside>
 
       {/* MOBILE / TABLET TOP BAR (Warm surface, AX brand, Scenario Date, Search, and Add files) */}
-      <header className="lg:hidden flex items-center justify-between px-4 py-3 bg-surface border-b border-border sticky top-0 z-30 shadow-xs gap-2">
-        <div className="flex items-center gap-2.5 min-w-0">
-          <div className="w-7 h-7 rounded-lg bg-brand text-white flex items-center justify-center font-bold text-xs shrink-0">
+      <header className="lg:hidden flex items-center justify-between px-3 sm:px-4 py-2.5 bg-surface border-b border-border sticky top-0 z-30 shadow-xs gap-2 min-w-0">
+        <div className="flex items-center gap-2 min-w-0 flex-1">
+          <div className="w-7 h-7 rounded-lg bg-brand text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
             AX
           </div>
-          <div className="truncate">
-            <span className="font-semibold text-sm text-ink-primary">Axeom StudioOS</span>
+          <div className="min-w-0 flex-1">
+            <span className="font-semibold text-sm text-ink-primary leading-tight truncate block">
+              Axeom StudioOS
+            </span>
             <button
               type="button"
               onClick={() => {
                 setDateError(null);
                 setIsDateModalOpen(true);
               }}
-              className="flex items-center gap-1 text-[11px] text-ink-muted hover:text-ink-primary font-medium cursor-pointer -mt-0.5 truncate"
+              className="flex items-center gap-1 text-[11px] text-ink-muted hover:text-ink-primary font-medium cursor-pointer -mt-0.5 min-w-0 max-w-full"
               title="Click to change scenario reference date"
             >
-              <span>As of {refDateInfo?.reference_date || referenceDate}</span>
-              <span className="text-[9px] px-1 py-0.2 rounded bg-brand-soft text-brand font-semibold">
+              <span className="truncate">As of {refDateInfo?.reference_date || referenceDate}</span>
+              <span className="text-[9px] px-1 py-0.2 rounded bg-brand-soft text-brand font-semibold shrink-0">
                 {refDateInfo?.reference_date === "2026-10-06" || referenceDate === "2026-10-06"
                   ? "Baseline"
                   : refDateInfo?.is_today
@@ -362,11 +364,11 @@ export function AppShell({ children }: AppShellProps) {
           </div>
         </div>
 
-        <div className="flex items-center gap-1.5 shrink-0">
+        <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
           <button
             type="button"
             onClick={() => setIsSearchOpen(true)}
-            className="p-1.5 rounded-lg bg-surface-muted text-ink-secondary hover:text-ink-primary border border-border cursor-pointer"
+            className="p-1.5 sm:p-2 rounded-lg bg-surface-muted text-ink-secondary hover:text-ink-primary border border-border cursor-pointer transition-colors"
             aria-label="Search records"
             title="Search all records (Cmd+K)"
           >
@@ -379,19 +381,21 @@ export function AppShell({ children }: AppShellProps) {
               setDeleteError(null);
               setIsConfirmDeleteOpen(true);
             }}
-            className="flex items-center gap-1 px-2.5 py-1.5 bg-red-950/40 hover:bg-red-900/60 text-red-400 border border-red-900/60 text-xs font-medium rounded-lg cursor-pointer transition-colors"
+            className="flex items-center gap-1 p-1.5 sm:px-2.5 sm:py-1.5 bg-red-950/40 hover:bg-red-900/60 text-red-400 border border-red-900/60 text-xs font-medium rounded-lg cursor-pointer transition-colors"
             title="Delete all files"
+            aria-label="Delete all files"
           >
-            <Trash2 className="w-3.5 h-3.5" />
-            <span>Delete all</span>
+            <Trash2 className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
+            <span className="hidden sm:inline">Delete all</span>
           </button>
 
           <button
             onClick={() => setIsAddFilesOpen(true)}
-            className="flex items-center gap-1 px-3 py-1.5 bg-brand hover:bg-brand-hover text-white text-xs font-medium rounded-lg cursor-pointer transition-colors shadow-xs"
+            className="flex items-center gap-1 px-2.5 py-1.5 sm:px-3 sm:py-1.5 bg-brand hover:bg-brand-hover text-white text-xs font-medium rounded-lg cursor-pointer transition-colors shadow-xs"
+            aria-label="Add files"
           >
-            <Plus className="w-3.5 h-3.5" />
-            <span>Add files</span>
+            <Plus className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
+            <span>Add<span className="hidden sm:inline"> files</span></span>
           </button>
         </div>
       </header>

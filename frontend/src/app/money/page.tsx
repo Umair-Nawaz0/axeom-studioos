@@ -168,7 +168,7 @@ export default function MoneyPage() {
 
       {/* 1. FOUR SUMMARY CARDS WITH CLEAR ACCOUNTING DEFINITIONS */}
       <section aria-label="Financial position summary">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
           {/* Card 1: Bank Collections */}
           <MetricCard
             label="Bank collections received"
@@ -208,10 +208,10 @@ export default function MoneyPage() {
       </section>
 
       {/* 2. TABBED AUDIT QUEUES */}
-      <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap border-b border-border pb-2">
+      <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-2 border-b border-border no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 flex-nowrap sm:flex-wrap">
         <button
           onClick={() => setActiveTab("overdue")}
-          className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
+          className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer shrink-0 whitespace-nowrap ${
             activeTab === "overdue"
               ? "bg-brand text-white shadow-xs"
               : "bg-surface text-ink-secondary hover:text-ink-primary border border-border hover:bg-surface-muted"
@@ -221,7 +221,7 @@ export default function MoneyPage() {
         </button>
         <button
           onClick={() => setActiveTab("billing_errors")}
-          className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
+          className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer shrink-0 whitespace-nowrap ${
             activeTab === "billing_errors"
               ? "bg-brand text-white shadow-xs"
               : "bg-surface text-ink-secondary hover:text-ink-primary border border-border hover:bg-surface-muted"
@@ -231,7 +231,7 @@ export default function MoneyPage() {
         </button>
         <button
           onClick={() => setActiveTab("never_billed")}
-          className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
+          className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer shrink-0 whitespace-nowrap ${
             activeTab === "never_billed"
               ? "bg-brand text-white shadow-xs"
               : "bg-surface text-ink-secondary hover:text-ink-primary border border-border hover:bg-surface-muted"
@@ -241,7 +241,7 @@ export default function MoneyPage() {
         </button>
         <button
           onClick={() => setActiveTab("we_owe")}
-          className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
+          className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer shrink-0 whitespace-nowrap ${
             activeTab === "we_owe"
               ? "bg-brand text-white shadow-xs"
               : "bg-surface text-ink-secondary hover:text-ink-primary border border-border hover:bg-surface-muted"
@@ -251,7 +251,7 @@ export default function MoneyPage() {
         </button>
         <button
           onClick={() => setActiveTab("invoices_ledger")}
-          className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
+          className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer shrink-0 whitespace-nowrap ${
             activeTab === "invoices_ledger"
               ? "bg-brand text-white shadow-xs"
               : "bg-surface text-ink-secondary hover:text-ink-primary border border-border hover:bg-surface-muted"
@@ -261,7 +261,7 @@ export default function MoneyPage() {
         </button>
         <button
           onClick={() => setActiveTab("payments_ledger")}
-          className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
+          className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer shrink-0 whitespace-nowrap ${
             activeTab === "payments_ledger"
               ? "bg-brand text-white shadow-xs"
               : "bg-surface text-ink-secondary hover:text-ink-primary border border-border hover:bg-surface-muted"

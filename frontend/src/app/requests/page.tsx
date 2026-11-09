@@ -386,11 +386,11 @@ export default function RequestsPage() {
 
       {/* Tabs and Search Bar */}
       <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 flex-nowrap sm:flex-wrap">
           <button
             type="button"
             onClick={() => setActiveTab("leads")}
-            className={`px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
+            className={`px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer shrink-0 whitespace-nowrap ${
               activeTab === "leads"
                 ? "bg-brand text-white shadow-xs"
                 : "bg-surface text-ink-secondary hover:text-ink-primary border border-border hover:bg-surface-muted"
@@ -401,7 +401,7 @@ export default function RequestsPage() {
           <button
             type="button"
             onClick={() => setActiveTab("lost_requests")}
-            className={`px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
+            className={`px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer shrink-0 whitespace-nowrap ${
               activeTab === "lost_requests"
                 ? "bg-brand text-white shadow-xs"
                 : "bg-surface text-ink-secondary hover:text-ink-primary border border-border hover:bg-surface-muted"
@@ -412,19 +412,19 @@ export default function RequestsPage() {
           <button
             type="button"
             onClick={() => setActiveTab("privacy_alerts")}
-            className={`px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer inline-flex items-center gap-1.5 ${
+            className={`px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer inline-flex items-center gap-1.5 shrink-0 whitespace-nowrap ${
               activeTab === "privacy_alerts"
                 ? "bg-status-critical text-white shadow-xs"
                 : "bg-surface text-ink-secondary hover:text-ink-primary border border-border hover:bg-surface-muted"
             }`}
           >
             <ShieldAlert className="w-3.5 h-3.5" />
-            <span>Privacy & consent alerts ({privacyAlerts.length})</span>
+            <span>Privacy alerts ({privacyAlerts.length})</span>
           </button>
           <button
             type="button"
             onClick={() => setActiveTab("all_messages")}
-            className={`px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer inline-flex items-center gap-1.5 ${
+            className={`px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer inline-flex items-center gap-1.5 shrink-0 whitespace-nowrap ${
               activeTab === "all_messages"
                 ? "bg-brand text-white shadow-xs"
                 : "bg-surface text-ink-secondary hover:text-ink-primary border border-border hover:bg-surface-muted"

@@ -16,24 +16,29 @@ export function PageHeader({ title, description, referenceDate, actions }: PageH
   };
 
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-border">
-      <div className="space-y-1">
-        <div className="flex items-center gap-3 flex-wrap">
-          <h1 className="text-2xl sm:text-[26px] font-semibold text-ink-primary tracking-tight">
+    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pb-4 sm:pb-5 border-b border-border min-w-0">
+      <div className="space-y-1 min-w-0 flex-1">
+        <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+          <h1 className="text-xl sm:text-2xl lg:text-[26px] font-semibold text-ink-primary tracking-tight">
             {title}
           </h1>
           {referenceDate && (
             <button
               type="button"
               onClick={handleOpenDateModal}
-              className="group inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-brand-soft text-brand border border-[#cbe0d6] hover:bg-brand-soft/80 hover:border-brand/40 transition-all cursor-pointer shadow-2xs"
+              className="group inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-brand-soft text-brand border border-[#cbe0d6] hover:bg-brand-soft/80 hover:border-brand/40 transition-all cursor-pointer shadow-2xs shrink-0"
               title="Click to change scenario reference date"
             >
               <Calendar className="w-3 h-3 text-brand" />
               <span>
-                {referenceDate === "2026-10-06"
-                  ? "Challenge data as of Oct 6, 2026"
-                  : `Scenario date: ${referenceDate}`}
+                <span className="hidden sm:inline">
+                  {referenceDate === "2026-10-06"
+                    ? "Challenge data as of Oct 6, 2026"
+                    : `Scenario date: ${referenceDate}`}
+                </span>
+                <span className="sm:hidden">
+                  {referenceDate === "2026-10-06" ? "Oct 6, 2026" : referenceDate}
+                </span>
               </span>
               <span className="text-[10px] text-brand/70 group-hover:text-brand font-semibold underline underline-offset-2 ml-0.5">
                 Change
@@ -42,13 +47,13 @@ export function PageHeader({ title, description, referenceDate, actions }: PageH
           )}
         </div>
         {description && (
-          <p className="text-sm text-ink-secondary leading-relaxed">
+          <p className="text-xs sm:text-sm text-ink-secondary leading-relaxed">
             {description}
           </p>
         )}
       </div>
 
-      {actions && <div className="flex items-center gap-2 flex-wrap">{actions}</div>}
+      {actions && <div className="flex items-center gap-2 flex-wrap shrink-0">{actions}</div>}
     </div>
   );
 }
