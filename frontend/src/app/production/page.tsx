@@ -653,9 +653,9 @@ export default function ProductionPage() {
           aria-modal="true"
           aria-labelledby="video-detail-title"
         >
-          <div className="bg-surface rounded-2xl shadow-2xl w-full max-w-lg border border-border overflow-hidden flex flex-col max-h-[85vh]">
+          <div className="bg-surface rounded-2xl shadow-2xl w-full max-w-lg border border-border overflow-hidden flex flex-col max-h-[92vh] sm:max-h-[85vh] mx-2 sm:mx-auto">
             {/* Modal Header */}
-            <div className="flex items-center justify-between px-5 py-4 border-b border-border">
+            <div className="flex items-center justify-between px-4 sm:px-5 py-3.5 sm:py-4 border-b border-border">
               <div className="flex items-center gap-2.5">
                 <span className="font-mono text-xs font-bold text-ink-muted px-2 py-0.5 rounded bg-surface-muted">
                   {selectedVideo.video_id}

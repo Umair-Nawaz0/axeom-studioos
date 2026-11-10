@@ -40,6 +40,7 @@ import { StatusBadge } from "@/components/ui/StatusBadge";
 import { LoadingState } from "@/components/ui/LoadingState";
 import { ErrorState } from "@/components/ui/ErrorState";
 import { EmptyState } from "@/components/ui/EmptyState";
+import { AcquisitionChannelChart } from "@/components/AcquisitionChannelChart";
 
 const ALLOWED_CATEGORIES = [
   "new_lead_or_sales_enquiry",
@@ -501,7 +502,7 @@ export default function RequestsPage() {
                 <strong>{leadsData?.junk_unanswered_count ?? 0}</strong> junk/test rows.
               </span>
             </div>
-            <div className="flex items-center gap-1.5 flex-wrap">
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar -mx-2 px-2 sm:mx-0 sm:px-0 flex-nowrap sm:flex-wrap">
               {(
                 [
                   ["unanswered", `All Unanswered (${unansweredLeads.length})`],
@@ -515,7 +516,7 @@ export default function RequestsPage() {
                   key={key}
                   type="button"
                   onClick={() => setLeadsFilter(key)}
-                  className={`px-2.5 py-1 rounded-md text-xs font-medium transition-colors cursor-pointer ${
+                  className={`px-2.5 py-1 rounded-md text-xs font-medium transition-colors cursor-pointer shrink-0 whitespace-nowrap ${
                     leadsFilter === key
                       ? "bg-ink-primary text-white"
                       : "bg-surface border border-border text-ink-secondary hover:text-ink-primary"
@@ -931,9 +932,9 @@ export default function RequestsPage() {
               </div>
             )}
 
-            {/* 4 HIGH-LEVEL SUMMARY METRIC CARDS */}
+            {/* 4 HIGH-LEVEL SUMMARY METRIC CARDS (Adaptive Responsive Grid) */}
             {channelTotals && (
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 <MetricCard
                   label="Total inbound reach"
                   value={`${channelTotals.totalLeads} leads`}
@@ -943,7 +944,7 @@ export default function RequestsPage() {
                 />
                 <MetricCard
                   label="Won vs lost leads"
-                  value={`${channelTotals.wonLeads} won • ${channelTotals.lostLeads} lost`}
+                  value={`${channelTotals.wonLeads} won · ${channelTotals.lostLeads} lost`}
                   subtext={`${channelTotals.overallConversion}% win rate (${channelTotals.clientsAcquired} clients won)`}
                   icon={<TrendingUp className="w-4 h-4 text-status-success" />}
                   variant="success"
@@ -969,7 +970,93 @@ export default function RequestsPage() {
               </div>
             )}
 
-            <div className="bg-surface border border-border rounded-xl shadow-xs overflow-hidden">
+            {/* INTERACTIVE CHANNEL BAR CHART FOR ALL CHANNELS */}
+            <AcquisitionChannelChart
+              metrics={marketingData.channel_metrics || []}
+              bestChannelName={marketingData.best_marketing_channel?.channel}
+            />
+
+            {/* MOBILE CHANNEL BREAKDOWN CARDS (Visible only on mobile/tablet screens < 768px) */}
+            <div className="md:hidden space-y-3">
+              <span className="text-xs font-semibold text-ink-secondary uppercase tracking-wider block">
+                Channel Breakdown Details:
+              </span>
+              {marketingData.channel_metrics?.map((ch) => {
+                const isTop = ch.source === marketingData.best_marketing_channel?.channel;
+                const reachPercent = channelTotals?.totalLeads
+                  ? ((ch.total_leads / channelTotals.totalLeads) * 100).toFixed(1)
+                  : "0.0";
+
+                return (
+                  <div
+                    key={ch.source}
+                    className={`p-4 bg-surface border rounded-xl shadow-xs space-y-2.5 ${
+                      isTop ? "border-brand bg-brand-soft/10" : "border-border"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <h4 className="font-semibold text-sm text-ink-primary">{ch.source}</h4>
+                          {isTop && (
+                            <span className="px-1.5 py-0.2 rounded text-[10px] bg-brand text-white font-bold uppercase tracking-wider">
+                              Top Conversion
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-xs text-ink-muted">
+                          {ch.total_leads} leads ({reachPercent}% reach)
+                        </span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-base font-bold text-brand tabular-nums block">
+                          {formatCurrency(ch.direct_booking_revenue)}
+                        </span>
+                        <span className="text-xs font-semibold text-ink-primary">
+                          {ch.conversion_rate}% win rate
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-2 pt-2 border-t border-border/70 text-xs">
+                      <div>
+                        <span className="text-ink-muted block text-[11px]">Won</span>
+                        <span className="font-semibold text-status-success tabular-nums">{ch.won_leads}</span>
+                      </div>
+                      <div>
+                        <span className="text-ink-muted block text-[11px]">Lost</span>
+                        <span className="font-semibold text-status-critical tabular-nums">{ch.lost_leads}</span>
+                      </div>
+                      <div>
+                        <span className="text-ink-muted block text-[11px]">Unreplied</span>
+                        <span className={`font-semibold tabular-nums ${ch.unreplied_leads > 0 ? "text-status-warning" : "text-ink-muted"}`}>
+                          {ch.unreplied_leads}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+
+              {/* Total Aggregate Card for Mobile */}
+              {channelTotals && (
+                <div className="p-4 bg-surface-muted/60 border-2 border-border rounded-xl space-y-2 text-xs">
+                  <div className="flex items-center justify-between font-bold text-ink-primary">
+                    <span>Total / Aggregate Reach</span>
+                    <span className="text-brand text-sm sm:text-base font-bold tabular-nums">
+                      {formatCurrency(channelTotals.totalRevenue)}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-ink-secondary">
+                    <span>{channelTotals.totalLeads} total leads (100% reach)</span>
+                    <span className="font-semibold text-brand">{channelTotals.overallConversion}% win rate</span>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* DESKTOP CHANNEL TABLE (Hidden on mobile < 768px to prevent horizontal overflow) */}
+            <div className="hidden md:block bg-surface border border-border rounded-xl shadow-xs overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs sm:text-sm">
                   <thead className="bg-surface-muted/50 border-b border-border text-ink-secondary text-xs font-semibold uppercase tracking-wider">
@@ -1128,14 +1215,14 @@ export default function RequestsPage() {
           aria-modal="true"
           aria-labelledby="gemini-modal-title"
         >
-          <div className="bg-surface rounded-2xl shadow-2xl w-full max-w-2xl border border-border overflow-hidden flex flex-col max-h-[88vh]">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-border">
+          <div className="bg-surface rounded-2xl shadow-2xl w-full max-w-2xl border border-border overflow-hidden flex flex-col max-h-[92vh] sm:max-h-[88vh] mx-2 sm:mx-auto">
+            <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-border">
               <div>
-                <h2 id="gemini-modal-title" className="text-base font-semibold text-ink-primary flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-brand" />
+                <h2 id="gemini-modal-title" className="text-sm sm:text-base font-semibold text-ink-primary flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-brand shrink-0" />
                   <span>Google Gemini Message Classification</span>
                 </h2>
-                <p className="text-xs text-ink-secondary mt-0.5">
+                <p className="text-[11px] sm:text-xs text-ink-secondary mt-0.5">
                   Official google-genai SDK • gemini-2.5-flash • Isolated Prompts • Substring Validation
                 </p>
               </div>
@@ -1152,11 +1239,11 @@ export default function RequestsPage() {
               </button>
             </div>
 
-            <div className="p-6 overflow-y-auto flex-1 space-y-5 text-sm">
+            <div className="p-3.5 sm:p-6 overflow-y-auto flex-1 space-y-4 sm:space-y-5 text-sm">
               {/* Provider Status */}
-              <div className="p-4 rounded-xl bg-surface-muted/60 border border-border space-y-2">
+              <div className="p-3.5 sm:p-4 rounded-xl bg-surface-muted/60 border border-border space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold text-ink-primary text-sm">Provider & Model Status</span>
+                  <span className="font-semibold text-ink-primary text-xs sm:text-sm">Provider & Model Status</span>
                   <StatusBadge
                     label={geminiStatus?.configured ? "Live Gemini API Active" : "Not Configured (Calls Blocked)"}
                     variant={geminiStatus?.configured ? "success" : "warning"}
@@ -1188,19 +1275,19 @@ export default function RequestsPage() {
               </div>
 
               {/* Batch Processing Controls */}
-              <div className="p-4 rounded-xl bg-surface border border-border space-y-3">
+              <div className="p-3.5 sm:p-4 rounded-xl bg-surface border border-border space-y-3">
                 <span className="font-semibold text-ink-primary text-xs uppercase tracking-wider block">
                   Batch Classification Runner:
                 </span>
                 <p className="text-xs text-ink-secondary">
                   Process inbound messages in isolated chunks of 10–15 messages with SHA-256 deduplication and exact substring verification.
                 </p>
-                <div className="flex items-center gap-2 flex-wrap">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                   <button
                     type="button"
                     disabled={batchLoading}
                     onClick={() => handleBatchClassify(true)}
-                    className="px-3.5 py-2 bg-surface-muted hover:bg-surface border border-border text-ink-primary text-xs font-medium rounded-lg transition-colors cursor-pointer inline-flex items-center gap-1.5"
+                    className="w-full sm:w-auto px-3.5 py-2.5 sm:py-2 bg-surface-muted hover:bg-surface border border-border text-ink-primary text-xs font-medium rounded-lg transition-colors cursor-pointer inline-flex items-center justify-center gap-1.5"
                   >
                     {batchLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Bot className="w-3.5 h-3.5" />}
                     <span>Run Dry-Run Batch</span>
@@ -1209,7 +1296,7 @@ export default function RequestsPage() {
                     type="button"
                     disabled={batchLoading || !geminiStatus?.configured}
                     onClick={() => handleBatchClassify(false)}
-                    className="px-3.5 py-2 bg-brand hover:bg-brand-hover disabled:opacity-50 text-white text-xs font-medium rounded-lg transition-colors cursor-pointer inline-flex items-center gap-1.5 shadow-xs"
+                    className="w-full sm:w-auto px-3.5 py-2.5 sm:py-2 bg-brand hover:bg-brand-hover disabled:opacity-50 text-white text-xs font-medium rounded-lg transition-colors cursor-pointer inline-flex items-center justify-center gap-1.5 shadow-xs"
                   >
                     {batchLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Sparkles className="w-3.5 h-3.5" />}
                     <span>Classify Next Batch (Live Gemini)</span>
@@ -1224,7 +1311,7 @@ export default function RequestsPage() {
               </div>
 
               {/* Interactive Single-Message Classifier */}
-              <div className="p-4 rounded-xl bg-surface-muted/50 border border-border space-y-3">
+              <div className="p-3.5 sm:p-4 rounded-xl bg-surface-muted/50 border border-border space-y-3">
                 <span className="font-semibold text-ink-primary text-xs uppercase tracking-wider block">
                   Test Single Message Classification:
                 </span>
@@ -1233,18 +1320,18 @@ export default function RequestsPage() {
                     {testError}
                   </p>
                 )}
-                <form onSubmit={handleTestClassify} className="flex gap-2">
+                <form onSubmit={handleTestClassify} className="flex flex-col sm:flex-row gap-2">
                   <input
                     type="text"
                     value={testText}
                     onChange={(e) => setTestText(e.target.value)}
                     placeholder="Enter customer message (e.g. 'Please blur the patient face in reel 2')..."
-                    className="flex-1 px-3.5 py-2 bg-surface border border-border rounded-lg text-xs sm:text-sm text-ink-primary focus:outline-none focus:border-brand"
+                    className="w-full sm:flex-1 px-3.5 py-2.5 bg-surface border border-border rounded-lg text-xs sm:text-sm text-ink-primary focus:outline-none focus:border-brand min-w-0"
                   />
                   <button
                     type="submit"
                     disabled={testLoading || !testText.trim()}
-                    className="px-4 py-2 bg-brand hover:bg-brand-hover disabled:opacity-50 text-white text-xs sm:text-sm font-medium rounded-lg transition-colors cursor-pointer inline-flex items-center gap-1.5 shadow-xs"
+                    className="w-full sm:w-auto px-4 py-2.5 bg-brand hover:bg-brand-hover disabled:opacity-50 text-white text-xs sm:text-sm font-medium rounded-lg transition-colors cursor-pointer inline-flex items-center justify-center gap-1.5 shadow-xs shrink-0"
                   >
                     {testLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
                     <span>Classify</span>
@@ -1307,13 +1394,13 @@ export default function RequestsPage() {
           aria-modal="true"
           aria-labelledby="review-modal-title"
         >
-          <div className="bg-surface rounded-2xl shadow-2xl w-full max-w-lg border border-border overflow-hidden flex flex-col max-h-[88vh]">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-border">
+          <div className="bg-surface rounded-2xl shadow-2xl w-full max-w-lg border border-border overflow-hidden flex flex-col max-h-[92vh] sm:max-h-[88vh] mx-2 sm:mx-auto">
+            <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-border">
               <div>
-                <h2 id="review-modal-title" className="text-base font-semibold text-ink-primary">
+                <h2 id="review-modal-title" className="text-sm sm:text-base font-semibold text-ink-primary">
                   Human Classification Review
                 </h2>
-                <p className="text-xs text-ink-secondary mt-0.5">
+                <p className="text-[11px] sm:text-xs text-ink-secondary mt-0.5">
                   Msg #{selectedMsgForReview.line_number} • {selectedMsgForReview.sender} ({selectedMsgForReview.channel})
                 </p>
               </div>
@@ -1327,7 +1414,7 @@ export default function RequestsPage() {
               </button>
             </div>
 
-            <div className="p-6 overflow-y-auto flex-1 space-y-4 text-xs sm:text-sm">
+            <div className="p-4 sm:p-6 overflow-y-auto flex-1 space-y-4 text-xs sm:text-sm">
               <div className="p-3 bg-canvas border border-border rounded-lg text-ink-primary text-xs leading-relaxed italic">
                 &ldquo;{selectedMsgForReview.message_text}&rdquo;
               </div>

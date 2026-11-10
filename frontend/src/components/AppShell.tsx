@@ -307,7 +307,7 @@ export function AppShell({ children }: AppShellProps) {
               setDeleteError(null);
               setIsConfirmDeleteOpen(true);
             }}
-            className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-red-950/40 hover:bg-red-900/60 text-red-400 hover:text-red-300 border border-red-900/60 rounded-lg text-xs font-medium transition-colors cursor-pointer"
+            className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-red-900/30 hover:bg-red-900/60 text-red-300 hover:text-white border border-red-800/50 rounded-lg text-xs font-medium transition-colors cursor-pointer"
             title="Delete all files from database"
           >
             <Trash2 className="w-3.5 h-3.5" />
@@ -381,7 +381,7 @@ export function AppShell({ children }: AppShellProps) {
               setDeleteError(null);
               setIsConfirmDeleteOpen(true);
             }}
-            className="flex items-center gap-1 p-1.5 sm:px-2.5 sm:py-1.5 bg-red-950/40 hover:bg-red-900/60 text-red-400 border border-red-900/60 text-xs font-medium rounded-lg cursor-pointer transition-colors"
+            className="flex items-center gap-1 p-1.5 sm:px-2.5 sm:py-1.5 bg-status-critical-bg hover:bg-status-critical text-status-critical hover:text-white border border-status-critical-border text-xs font-medium rounded-lg cursor-pointer transition-colors shadow-2xs"
             title="Delete all files"
             aria-label="Delete all files"
           >

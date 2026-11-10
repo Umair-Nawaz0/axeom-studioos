@@ -28,21 +28,21 @@ export function MetricCard({
   }[variant];
 
   const content = (
-    <div className="p-3.5 sm:p-5 bg-surface border border-border rounded-xl shadow-xs hover:border-[#cbd7cf] transition-all duration-150 flex flex-col justify-between h-full min-w-0 overflow-hidden">
+    <div className="p-3 sm:p-4 lg:p-5 bg-surface border border-border rounded-xl shadow-xs hover:border-[#cbd7cf] transition-all duration-150 flex flex-col justify-between h-full min-w-0">
       <div className="flex items-start justify-between gap-1.5 min-w-0">
-        <span className="text-xs sm:text-[13px] font-medium text-ink-secondary truncate">
+        <span className="text-xs sm:text-[13px] font-medium text-ink-secondary line-clamp-2 leading-snug">
           {label}
         </span>
-        {icon && <div className="text-ink-secondary/70 shrink-0">{icon}</div>}
+        {icon && <div className="text-ink-secondary/70 shrink-0 mt-0.5">{icon}</div>}
         {!icon && href && <ArrowUpRight className="w-4 h-4 text-ink-muted group-hover:text-ink-primary transition-colors shrink-0" />}
       </div>
 
       <div className="mt-2 sm:mt-3 min-w-0">
-        <div className={`text-lg xs:text-xl sm:text-2xl lg:text-[28px] font-semibold tabular-nums tracking-tight truncate ${valueColor}`}>
+        <div className={`text-base xs:text-lg sm:text-xl lg:text-[26px] font-semibold tabular-nums tracking-tight break-words leading-tight ${valueColor}`}>
           {value}
         </div>
         {subtext && (
-          <p className="text-[11px] sm:text-xs text-ink-muted mt-0.5 sm:mt-1 leading-normal font-normal truncate">
+          <p className="text-[11px] sm:text-xs text-ink-muted mt-1 leading-normal font-normal line-clamp-2">
             {subtext}
           </p>
         )}

@@ -302,11 +302,11 @@ export default function MoneyPage() {
               </p>
             </div>
 
-            <div className="flex items-center gap-1.5 shrink-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full sm:w-auto shrink-0">
               <button
                 type="button"
                 onClick={() => setOverdueMode("reconciled")}
-                className={`px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer ${
+                className={`px-3 py-2 sm:py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer text-center ${
                   overdueMode === "reconciled"
                     ? "bg-brand text-white shadow-xs"
                     : "bg-surface-muted text-ink-secondary hover:text-ink-primary"
@@ -317,7 +317,7 @@ export default function MoneyPage() {
               <button
                 type="button"
                 onClick={() => setOverdueMode("source")}
-                className={`px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer ${
+                className={`px-3 py-2 sm:py-1.5 rounded-lg text-xs font-medium transition-colors cursor-pointer text-center ${
                   overdueMode === "source"
                     ? "bg-brand text-white shadow-xs"
                     : "bg-surface-muted text-ink-secondary hover:text-ink-primary"
@@ -637,7 +637,8 @@ export default function MoneyPage() {
             </div>
           </div>
 
-          <div className="bg-surface border border-border rounded-xl shadow-xs overflow-hidden">
+          {/* Desktop Table */}
+          <div className="hidden md:block bg-surface border border-border rounded-xl shadow-xs overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs sm:text-sm">
               <thead className="bg-surface-muted/50 border-b border-border text-ink-secondary text-xs font-semibold uppercase tracking-wider">
@@ -683,6 +684,34 @@ export default function MoneyPage() {
             </div>
           </div>
 
+          {/* Mobile Stacked Cards */}
+          <div className="md:hidden space-y-3">
+            {filteredInvoices.slice(0, visibleLedgerCount).map((inv) => {
+              const stat = getReconciledDisplayStatus(inv);
+              return (
+                <div
+                  key={inv.invoice_no}
+                  className="p-4 bg-surface border border-border rounded-xl shadow-xs space-y-2"
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <span className="font-mono text-xs text-ink-muted">{inv.invoice_no}</span>
+                      <h4 className="font-semibold text-sm text-ink-primary">{inv.client}</h4>
+                      {inv.memo && <p className="text-xs text-ink-secondary mt-0.5">{inv.memo}</p>}
+                    </div>
+                    <span className="font-semibold text-base text-ink-primary tabular-nums">
+                      {formatCurrency(inv.amount)}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs pt-2 border-t border-border/60 text-ink-secondary">
+                    <span>Due: {formatDate(inv.due)}</span>
+                    <StatusBadge label={stat.label} variant={stat.variant} />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
           {visibleLedgerCount < filteredInvoices.length && (
             <div className="text-center pt-2">
               <button
@@ -726,7 +755,8 @@ export default function MoneyPage() {
             </div>
           </div>
 
-          <div className="bg-surface border border-border rounded-xl shadow-xs overflow-hidden">
+          {/* Desktop Table */}
+          <div className="hidden md:block bg-surface border border-border rounded-xl shadow-xs overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs sm:text-sm">
               <thead className="bg-surface-muted/50 border-b border-border text-ink-secondary text-xs font-semibold uppercase tracking-wider">
@@ -780,6 +810,38 @@ export default function MoneyPage() {
               </tbody>
             </table>
             </div>
+          </div>
+
+          {/* Mobile Stacked Cards */}
+          <div className="md:hidden space-y-3">
+            {filteredPayments.slice(0, visibleLedgerCount).map((pay) => (
+              <div
+                key={pay.payment_id}
+                className="p-4 bg-surface border border-border rounded-xl shadow-xs space-y-2 border-l-4 border-l-status-success"
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <span className="font-mono text-xs text-ink-muted">{pay.payment_id}</span>
+                    <h4 className="font-semibold text-sm text-ink-primary">{pay.payer}</h4>
+                    {pay.client && pay.client !== pay.payer && (
+                      <span className="text-xs text-brand font-medium block mt-0.5">
+                        → {pay.client}
+                      </span>
+                    )}
+                  </div>
+                  <span className="font-semibold text-base text-status-success tabular-nums">
+                    {formatCurrency(pay.amount)}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between text-xs pt-2 border-t border-border/60 text-ink-secondary">
+                  <span>{formatDate(pay.payment_date)} • {pay.method}</span>
+                  <StatusBadge
+                    label={pay.reference_type}
+                    variant={pay.reference_type === "exact_invoice_id" ? "success" : "info"}
+                  />
+                </div>
+              </div>
+            ))}
           </div>
 
           {visibleLedgerCount < filteredPayments.length && (

@@ -441,13 +441,13 @@ export default function ClientsPage() {
                 ].map((item: any) => (
                   <div
                     key={`${item.table}-${item.id}`}
-                    className="p-3 bg-surface-muted/60 border border-border rounded-lg flex items-center justify-between gap-3 text-xs"
+                    className="p-3 bg-surface-muted/60 border border-border rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs"
                   >
-                    <div>
-                      <span className="font-semibold text-ink-primary">{item.title}</span>
-                      <span className="block text-ink-muted text-[11px]">{item.email}</span>
+                    <div className="min-w-0">
+                      <span className="font-semibold text-ink-primary block truncate">{item.title}</span>
+                      <span className="block text-ink-muted text-[11px] truncate">{item.email}</span>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 shrink-0">
                       <button
                         type="button"
                         disabled={actionLoadingId === `${item.table}-${item.id}`}

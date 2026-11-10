@@ -330,23 +330,23 @@ export default function ClientDetailPage() {
           </div>
         </div>
 
-        {/* 5 Compact Summary Metrics */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+        {/* 5 Compact Summary Metrics (Adaptive Mobile Layout) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3">
           <div className="p-3 bg-surface-muted/60 rounded-lg border border-border">
             <span className="text-xs font-medium text-ink-secondary block">Total invoiced</span>
-            <div className="text-lg font-semibold text-ink-primary mt-1 tabular-nums">
+            <div className="text-base sm:text-lg font-semibold text-ink-primary mt-1 tabular-nums">
               {formatCurrency(detail.financial_summary?.total_invoiced)}
             </div>
           </div>
           <div className="p-3 bg-surface-muted/60 rounded-lg border border-border">
             <span className="text-xs font-medium text-ink-secondary block">Bookings</span>
-            <div className="text-lg font-semibold text-ink-primary mt-1 tabular-nums">
+            <div className="text-base sm:text-lg font-semibold text-ink-primary mt-1 tabular-nums">
               {bookingsCount}
             </div>
           </div>
           <div className="p-3 bg-surface-muted/60 rounded-lg border border-border">
             <span className="text-xs font-medium text-ink-secondary block">Videos</span>
-            <div className="text-lg font-semibold text-ink-primary mt-1 tabular-nums">
+            <div className="text-base sm:text-lg font-semibold text-ink-primary mt-1 tabular-nums">
               {videosCount}
             </div>
           </div>
@@ -354,13 +354,13 @@ export default function ClientDetailPage() {
             <span className="text-xs font-medium text-ink-secondary block" title="Bank deposits explicitly matched to this client's invoices">
               Linked payments
             </span>
-            <div className="text-lg font-semibold text-status-success mt-1 tabular-nums">
+            <div className="text-base sm:text-lg font-semibold text-status-success mt-1 tabular-nums">
               {paymentsCount}
             </div>
           </div>
-          <div className="p-3 bg-surface-muted/60 rounded-lg border border-border">
+          <div className="col-span-2 sm:col-span-1 p-3 bg-surface-muted/60 rounded-lg border border-border">
             <span className="text-xs font-medium text-ink-secondary block">Messages</span>
-            <div className="text-lg font-semibold text-ink-primary mt-1 tabular-nums">
+            <div className="text-base sm:text-lg font-semibold text-ink-primary mt-1 tabular-nums">
               {messagesCount}
             </div>
           </div>
@@ -466,8 +466,8 @@ export default function ClientDetailPage() {
         </div>
       )}
 
-      {/* Segmented Navigation Tabs */}
-      <div className="border-b border-border flex items-center gap-1 sm:gap-2 overflow-x-auto pb-px">
+      {/* Segmented Navigation Tabs (Smooth Scroll on Mobile) */}
+      <div className="border-b border-border flex items-center gap-1 sm:gap-2 overflow-x-auto pb-px no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 flex-nowrap">
         <button
           type="button"
           onClick={() => setActiveTab("activity")}

@@ -242,26 +242,26 @@ export function AddFilesModal({ isOpen, onClose, onImportComplete }: AddFilesMod
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-xs p-4 animate-in fade-in duration-150"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-xs p-3 sm:p-4 animate-in fade-in duration-150"
       role="dialog"
       aria-modal="true"
       aria-labelledby="upload-modal-title"
     >
       <div
         ref={modalRef}
-        className="bg-surface rounded-2xl shadow-xl w-full max-w-2xl border border-border overflow-hidden flex flex-col max-h-[88vh]"
+        className="bg-surface rounded-2xl shadow-xl w-full max-w-2xl border border-border overflow-hidden flex flex-col max-h-[92vh] sm:max-h-[88vh] mx-1 sm:mx-auto"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-border">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-border">
           <div>
-            <h2 id="upload-modal-title" className="text-base font-semibold text-ink-primary">
+            <h2 id="upload-modal-title" className="text-sm sm:text-base font-semibold text-ink-primary">
               {stage === "result"
                 ? "Import Results"
                 : stage === "preview"
                 ? "Import Preview Before Commit"
                 : "Add Data Files & Import History"}
             </h2>
-            <p className="text-xs text-ink-secondary mt-0.5">
+            <p className="text-[11px] sm:text-xs text-ink-secondary mt-0.5">
               {stage === "result"
                 ? "Review the records ingested into StudioOS"
                 : stage === "preview"
@@ -282,7 +282,7 @@ export function AddFilesModal({ isOpen, onClose, onImportComplete }: AddFilesMod
         </div>
 
         {/* Body Content */}
-        <div className="p-6 overflow-y-auto flex-1 space-y-4 text-sm">
+        <div className="p-4 sm:p-6 overflow-y-auto flex-1 space-y-4 text-sm">
           {errorMsg && (
             <div className="p-3.5 rounded-xl bg-status-critical-bg border border-status-critical-border text-status-critical flex items-start gap-2.5 text-xs">
               <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
@@ -406,11 +406,11 @@ export function AddFilesModal({ isOpen, onClose, onImportComplete }: AddFilesMod
                 </div>
               )}
 
-              {/* Reset Database / Delete all files Action (Red Button) */}
-              <div className="p-3.5 rounded-xl bg-red-950/20 border border-red-900/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+              {/* Reset Database / Delete all files Action (High Contrast Accessible Alert) */}
+              <div className="p-4 rounded-xl bg-status-critical-bg/50 border border-status-critical-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                 <div className="space-y-0.5">
-                  <span className="font-semibold text-red-400 block">Reset database</span>
-                  <span className="text-red-300/80 text-[11px]">Clear all studio records to start fresh</span>
+                  <span className="font-semibold text-status-critical text-sm block">Reset database</span>
+                  <span className="text-ink-secondary text-xs">Clear all studio records to start fresh with new challenge files</span>
                 </div>
                 {confirmingReset ? (
                   <div className="flex items-center gap-2 shrink-0">
@@ -418,7 +418,7 @@ export function AddFilesModal({ isOpen, onClose, onImportComplete }: AddFilesMod
                       type="button"
                       disabled={isResetting}
                       onClick={() => setConfirmingReset(false)}
-                      className="px-2.5 py-1 rounded bg-surface border border-border text-ink-secondary hover:text-ink-primary"
+                      className="px-3 py-1.5 rounded-lg bg-surface border border-border text-ink-secondary hover:text-ink-primary font-medium transition-colors"
                     >
                       Cancel
                     </button>
@@ -426,9 +426,9 @@ export function AddFilesModal({ isOpen, onClose, onImportComplete }: AddFilesMod
                       type="button"
                       disabled={isResetting}
                       onClick={handleResetDatabase}
-                      className="px-3 py-1 rounded bg-status-critical hover:bg-red-700 text-white font-medium flex items-center gap-1 shadow-xs disabled:opacity-50"
+                      className="px-3.5 py-1.5 rounded-lg bg-status-critical hover:bg-red-700 text-white font-medium flex items-center gap-1.5 shadow-xs disabled:opacity-50 transition-colors cursor-pointer"
                     >
-                      {isResetting ? <Loader2 className="w-3 h-3 animate-spin" /> : <Trash2 className="w-3 h-3" />}
+                      {isResetting ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Trash2 className="w-3.5 h-3.5" />}
                       <span>{isResetting ? "Deleting..." : "Confirm delete"}</span>
                     </button>
                   </div>
@@ -436,7 +436,7 @@ export function AddFilesModal({ isOpen, onClose, onImportComplete }: AddFilesMod
                   <button
                     type="button"
                     onClick={() => setConfirmingReset(true)}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-red-950/50 hover:bg-red-900/70 text-red-400 hover:text-red-300 border border-red-900/60 rounded-lg text-xs font-medium cursor-pointer transition-colors shrink-0"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-status-critical hover:bg-red-700 text-white font-medium rounded-lg text-xs cursor-pointer transition-colors shrink-0 shadow-xs"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                     <span>Delete all files</span>
