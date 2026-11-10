@@ -130,7 +130,11 @@ export default function MoneyPage() {
     );
   }
 
-  const refDate = data.reference_date || "2026-10-06";
+  const refDate =
+    data.reference_date ||
+    (typeof window !== "undefined"
+      ? new Date().toISOString().split("T")[0]
+      : "2026-11-10");
 
   // Determine status label for invoices ledger
   const getReconciledDisplayStatus = (inv: (typeof invoicesLedger)[0]) => {

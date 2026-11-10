@@ -354,10 +354,10 @@ export function AppShell({ children }: AppShellProps) {
             >
               <span className="truncate">As of {refDateInfo?.reference_date || referenceDate}</span>
               <span className="text-[9px] px-1 py-0.2 rounded bg-brand-soft text-brand font-semibold shrink-0">
-                {refDateInfo?.reference_date === "2026-10-06" || referenceDate === "2026-10-06"
-                  ? "Baseline"
-                  : refDateInfo?.is_today
+                {refDateInfo?.is_today
                   ? "Today"
+                  : refDateInfo?.reference_date === "2026-10-06" || referenceDate === "2026-10-06"
+                  ? "Baseline"
                   : "Custom"}
               </span>
             </button>

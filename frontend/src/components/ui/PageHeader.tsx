@@ -33,8 +33,8 @@ export function PageHeader({ title, description, referenceDate, actions }: PageH
               <span>
                 <span className="hidden sm:inline">
                   {referenceDate === "2026-10-06"
-                    ? "Challenge data as of Oct 6, 2026"
-                    : `Scenario date: ${referenceDate}`}
+                    ? "Challenge baseline: Oct 6, 2026"
+                    : `As of ${referenceDate}`}
                 </span>
                 <span className="sm:hidden">
                   {referenceDate === "2026-10-06" ? "Oct 6, 2026" : referenceDate}

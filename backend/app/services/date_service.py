@@ -111,13 +111,17 @@ def get_active_reference_date() -> date:
     """
     Returns the currently active reference date for calculations.
     If explicitly overridden via set_active_reference_date(), returns that override.
-    Defaults to the challenge scenario date settings.REFERENCE_DATE (2026-10-06).
+    Defaults at start to today's date (detected via location date API or system clock).
     """
     global _ACTIVE_REFERENCE_DATE
     if _ACTIVE_REFERENCE_DATE is not None:
         return _ACTIVE_REFERENCE_DATE
 
-    return settings.REFERENCE_DATE
+    try:
+        loc = detect_location_date()
+        return date.fromisoformat(loc["date"])
+    except Exception:
+        return date.today()
 
 
 def set_active_reference_date(new_date: date) -> date:
@@ -128,6 +132,6 @@ def set_active_reference_date(new_date: date) -> date:
 
 
 def reset_active_reference_date() -> None:
-    """Clears the global override, reverting to the challenge default reference date (2026-10-06)."""
+    """Clears the global override, reverting to today's date."""
     global _ACTIVE_REFERENCE_DATE
     _ACTIVE_REFERENCE_DATE = None
