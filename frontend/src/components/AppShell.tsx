@@ -20,6 +20,7 @@ import {
   Check,
 } from "lucide-react";
 import { AddFilesModal } from "./AddFilesModal";
+import { PresentationCursor } from "./PresentationCursor";
 import { api, notifyDataRefreshed, notifyReferenceDateChanged, ReferenceDateInfo } from "@/lib/api";
 
 interface AppShellProps {
@@ -432,6 +433,9 @@ export function AppShell({ children }: AppShellProps) {
           })}
         </div>
       </nav>
+
+      {/* PRESENTATION SPOTLIGHT CURSOR */}
+      <PresentationCursor />
 
       {/* SINGLE GLOBAL ADD FILES MODAL INSTANCE */}
       <AddFilesModal
