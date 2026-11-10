@@ -110,12 +110,19 @@ def detect_location_date(timeout_sec: float = 3.5, force_refresh: bool = False) 
 def get_active_reference_date() -> date:
     """
     Returns the currently active reference date for calculations.
-    If explicitly overridden via set_active_reference_date(), returns that override.
+    If explicitly overridden via set_active_reference_date() or os.environ["REFERENCE_DATE"], returns that override.
     Defaults at start to today's date (detected via location date API or system clock).
     """
     global _ACTIVE_REFERENCE_DATE
     if _ACTIVE_REFERENCE_DATE is not None:
         return _ACTIVE_REFERENCE_DATE
+
+    env_date = os.getenv("REFERENCE_DATE")
+    if env_date:
+        try:
+            return date.fromisoformat(env_date)
+        except Exception:
+            pass
 
     try:
         loc = detect_location_date()

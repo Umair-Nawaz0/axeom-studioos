@@ -3,8 +3,11 @@ node_modules/
 .pnp/
 .pnp.js
 
-# Next.js build output
-.next/
+# Build & Scratch Video Artifacts
+video_build/
+*.mp4
+*.webm
+
 out/
 build/
 dist/

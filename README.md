@@ -4,6 +4,10 @@
 > Operational decision-support system and executive dashboard for a commercial video & podcast studio in Dallas.  
 > Designed to pass the **10-Second Owner Test**, adhere to **"Suggest, never act alone"**, and resolve fragmented business records into verified truth.
 
+- 🌐 **Live Deployment:** [https://axeom-studioos.vercel.app/](https://axeom-studioos.vercel.app/)
+- 🎥 **Video Presentation & Walkthrough (YouTube):** [https://youtu.be/7dcQxKLS4Pc](https://youtu.be/7dcQxKLS4Pc)
+- 💻 **GitHub Repository:** [https://github.com/Umair-Nawaz0/axeom-studioos](https://github.com/Umair-Nawaz0/axeom-studioos)
+
 ---
 
 ## 1. Executive Summary & Problem Resolution
